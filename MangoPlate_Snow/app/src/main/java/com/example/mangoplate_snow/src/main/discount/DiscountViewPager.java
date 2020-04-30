@@ -1,4 +1,4 @@
-package com.example.mangoplate_snow.src.main;
+package com.example.mangoplate_snow.src.main.discount;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,9 +7,9 @@ import android.view.MotionEvent;
 
 import androidx.viewpager.widget.ViewPager;
 
-public class MainViewPager extends ViewPager {
+public class DiscountViewPager extends ViewPager {
     private boolean enabled;
-    public MainViewPager(Context context, AttributeSet attrs) {
+    public DiscountViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.enabled = true;
     }

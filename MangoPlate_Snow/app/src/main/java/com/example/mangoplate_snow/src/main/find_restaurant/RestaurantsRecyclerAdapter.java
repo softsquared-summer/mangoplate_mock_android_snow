@@ -1,4 +1,4 @@
-package com.example.mangoplate_snow.src.main.findRestaurant;
+package com.example.mangoplate_snow.src.main.find_restaurant;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,7 +52,7 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
     @NonNull
     @Override
     public RItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_main, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_restaurant, parent, false);
         return new RItemViewHolder(view);
     }
 

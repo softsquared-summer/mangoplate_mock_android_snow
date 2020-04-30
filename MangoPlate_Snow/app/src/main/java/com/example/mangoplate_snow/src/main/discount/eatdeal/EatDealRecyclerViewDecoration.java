@@ -6,17 +6,16 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RecyclerViewDecoration extends RecyclerView.ItemDecoration {
-    private final int divHeight;
+public class EatDealRecyclerViewDecoration extends RecyclerView.ItemDecoration {
+    private final int divSpace;
 
-    public RecyclerViewDecoration(int divHeight) {
-        this.divHeight = divHeight;
+    public EatDealRecyclerViewDecoration(int divSpace) {
+        this.divSpace = divSpace;
     }
 
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
-        if(parent.getChildAdapterPosition(view)!=parent.getAdapter().getItemCount()-1)
-            outRect.bottom = divHeight;
+            outRect.bottom = divSpace;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.mangoplate_snow.src.main.findRestaurant.models;
+package com.example.mangoplate_snow.src.main.find_restaurant.models;
 
 import com.google.gson.annotations.SerializedName;
 

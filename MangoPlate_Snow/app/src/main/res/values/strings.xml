@@ -2,4 +2,6 @@
     <string name="app_name">MangoPlate_Snow</string>
     <string name="loading">로딩중입니다.</string>
     <string name="nework_error">네트워크 연결이 원활하지 않습니다.</string>
+
+    <string name="district_now">지금 보고있는 지역은</string>
 </resources>

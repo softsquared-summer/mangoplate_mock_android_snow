@@ -6,19 +6,22 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RecyclerViewDecoration_R extends RecyclerView.ItemDecoration {
+public class FindRestaurantRecyclerViewDecoration extends RecyclerView.ItemDecoration {
     private final int divSpace;
 
-    public RecyclerViewDecoration_R(int divSpace) {
+    public FindRestaurantRecyclerViewDecoration(int divSpace) {
         this.divSpace = divSpace;
     }
 
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
-        if(parent.getChildAdapterPosition(view)%2==1)
+        if(parent.getChildAdapterPosition(view)%2==1) {
             outRect.left = divSpace;
-        else
+            outRect.bottom = divSpace*2;
+        } else {
             outRect.right = divSpace;
+            outRect.bottom = divSpace*2;
+        }
     }
 }

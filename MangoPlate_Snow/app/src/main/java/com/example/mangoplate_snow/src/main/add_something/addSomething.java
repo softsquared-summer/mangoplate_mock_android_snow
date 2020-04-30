@@ -1,4 +1,4 @@
-package com.example.mangoplate_snow.src.main.addSomething;
+package com.example.mangoplate_snow.src.main.add_something;
 
 public class addSomething {
 }

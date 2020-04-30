@@ -1,4 +1,4 @@
-package com.example.mangoplate_snow.src.main.find_restaurant;
+package com.example.mangoplate_snow.src.main.discount.toplist;
 
-public class FindRestaurantService {
+public class TopListService {
 }

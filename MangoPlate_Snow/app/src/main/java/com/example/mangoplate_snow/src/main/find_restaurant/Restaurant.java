@@ -1,4 +1,4 @@
-package com.example.mangoplate_snow.src.main.findRestaurant;
+package com.example.mangoplate_snow.src.main.find_restaurant;
 
 public class Restaurant {
     private String restaurantName;

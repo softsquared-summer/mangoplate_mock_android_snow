@@ -1,8 +1,8 @@
-package com.example.mangoplate_snow.src.main.models;
+package com.example.mangoplate_snow.src.main.discount.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DefaultResponse {
+public class DiscountResponse {
     @SerializedName("code")
     private int code;
 

@@ -1,4 +1,4 @@
-package com.example.mangoplate_snow.src.main.findRestaurant.interfaces;
+package com.example.mangoplate_snow.src.main.find_restaurant.interfaces;
 
 import com.example.mangoplate_snow.src.main.models.DefaultResponse;
 

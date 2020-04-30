@@ -1,4 +1,4 @@
-package com.example.mangoplate_snow.src.main.interfaces;
+package com.example.mangoplate_snow.src.main.community.interfaces;
 
 import com.example.mangoplate_snow.src.main.models.DefaultResponse;
 
@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface MainRetrofitInterface {
+public interface CommunityRetrofitInterface {
     @GET("/jwt")
     Call<DefaultResponse> getTest();
 

@@ -1,6 +1,6 @@
-package com.example.mangoplate_snow.src.main.interfaces;
+package com.example.mangoplate_snow.src.login.interfaces;
 
-public interface MainActivityView {
+public interface LoginActivityView {
     void validateSuccess(String text);
     void validateFailure(String message);
 }

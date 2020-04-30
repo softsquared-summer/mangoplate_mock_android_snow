@@ -1,5 +1,6 @@
-package com.example.mangoplate_snow.src.main.findRestaurant;
+package com.example.mangoplate_snow.src.main.find_restaurant;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,34 +13,40 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.mangoplate_snow.R;
 import com.example.mangoplate_snow.src.BaseFragment;
-import com.example.mangoplate_snow.src.main.findRestaurant.interfaces.FindRestaurantFragmentView;
+import com.example.mangoplate_snow.src.main.find_restaurant.interfaces.FindRestaurantFragmentView;
 
 import java.util.ArrayList;
 
 public class FindRestaurantFragment extends BaseFragment implements FindRestaurantFragmentView {
-
     private RestaurantsRecyclerAdapter mRestaurantsRecyclerAdapter;
-    private RecyclerView mRecyclerView;
+    private RecyclerView mRestaurantRecyclerView;
     ArrayList<Restaurant> restaurants = new ArrayList<>();
+    private Context mContext;
 
-    public FindRestaurantFragment(){
+    public FindRestaurantFragment() {
+    }
 
+    public FindRestaurantFragment(Context context){
+        this.mContext = context;
     }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.find_restaurant_fragment, container, false);
+        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_find_restaurant, container, false);
 
-        mRecyclerView = rootView.findViewById(R.id.frag_find_restaurant_recyclerview_restaurant_list);
+        mRestaurantRecyclerView = rootView.findViewById(R.id.frag_find_restaurant_recyclerview_restaurant_list);
         mRestaurantsRecyclerAdapter = new RestaurantsRecyclerAdapter(restaurants);
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        mRecyclerView.setAdapter(mRestaurantsRecyclerAdapter);
+        mRestaurantRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        mRestaurantRecyclerView.setAdapter(mRestaurantsRecyclerAdapter);
 
         for(int i=0; i<20; i++){
             restaurants.add(new Restaurant("이름입니다."+i, "강남구 - 0.1235135m",
                     "2533", "12", "2.6"));
         }
         mRestaurantsRecyclerAdapter.notifyDataSetChanged();
+
+        FindRestaurantRecyclerViewDecoration space = new FindRestaurantRecyclerViewDecoration(20);
+        mRestaurantRecyclerView.addItemDecoration(space);
 
         return rootView;
     }

@@ -1,4 +1,4 @@
-package com.example.mangoplate_snow.src.main.discount.eatdeal;
+package com.example.mangoplate_snow.src.main.discount.toplist;
 
 import android.graphics.Rect;
 import android.view.View;
@@ -6,10 +6,10 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class EatDealRecyclerViewDecoration extends RecyclerView.ItemDecoration {
+public class TopListRecyclerViewDecoration extends RecyclerView.ItemDecoration {
     private final int divSpace;
 
-    public EatDealRecyclerViewDecoration(int divSpace) {
+    public TopListRecyclerViewDecoration(int divSpace) {
         this.divSpace = divSpace;
     }
 

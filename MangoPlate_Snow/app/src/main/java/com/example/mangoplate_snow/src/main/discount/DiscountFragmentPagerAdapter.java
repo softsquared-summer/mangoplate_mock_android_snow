@@ -1,4 +1,4 @@
-package com.example.mangoplate_snow.src.main;
+package com.example.mangoplate_snow.src.main.discount;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -10,12 +10,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
+public class DiscountFragmentPagerAdapter extends FragmentPagerAdapter {
     public List<Fragment> mFragments = new ArrayList<>();
     public List<String> mFragmentTitles = new ArrayList<>();
 
-    public MainFragmentPagerAdapter(@NonNull FragmentManager fm, int behavior) {
-        super(fm, behavior);
+    public DiscountFragmentPagerAdapter(@NonNull FragmentManager fm) {
+        super(fm);
     }
     @NotNull
     @Override

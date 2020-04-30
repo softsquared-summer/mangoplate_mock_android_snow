@@ -1,91 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".src.main.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/main_linear_top_bar"
+<!--    <FrameLayout-->
+<!--        android:id="@+id/main_frame_fragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+<!--    <androidx.viewpager.widget.ViewPager-->
+<!--        android:id="@+id/main_pager_fragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+<!--    </androidx.viewpager.widget.ViewPager>-->
+
+    <com.example.mangoplate_snow.src.main.MainViewPager
+        android:id="@+id/main_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    </LinearLayout>
-    <ScrollView
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/main_bottom_tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:paddingTop="60dp">
-        <RelativeLayout
-            android:id="@+id/main_relatvie_for_recycleview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ViewFlipper
-                android:id="@+id/main_auto_sliding_banner"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:background="@color/colorMainTheme"/>
-            <LinearLayout
-                android:id="@+id/main_linear_mid_bar"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@id/main_auto_sliding_banner"
-                android:orientation="horizontal"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="필터 부분"
-                    android:textSize="40dp"/>
-            </LinearLayout>
-            <ImageView
-                android:id="@+id/main_iv_ob_lager"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_below="@id/main_linear_mid_bar"
-                android:background="#FF2255"/>
+        android:layout_height="50dp"
+        app:tabIndicatorHeight="0dp">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/main_recyclerview_restaurant_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/main_iv_ob_lager"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_below="@id/main_recyclerview_restaurant_list"
-                android:layout_marginBottom="10dp"
-                android:background="@color/colorMainTheme"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true">
+    </com.google.android.material.tabs.TabLayout>
+<!--    <LinearLayout-->
+<!--        android:id="@+id/main_table_bottom_bar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:background="#ffffff">-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/main_btn_find_restaurant_tab"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:background="#ffffff"-->
+<!--            android:src="@drawable/ic_find_restaurant_tab"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="customOnClick"/>-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/main_btn_discount_tab"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:background="#ffffff"-->
+<!--            android:src="@drawable/ic_discount_tab"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="customOnClick"/>-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/main_btn_add_tab"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:background="#ffffff"-->
+<!--            android:src="@drawable/ic_add"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="customOnClick"/>-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/main_btn_community_tab"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:background="#ffffff"-->
+<!--            android:src="@drawable/ic_community_tab"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="customOnClick"/>-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/main_btn_mypage_tab"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:background="#ffffff"-->
+<!--            android:src="@drawable/ic_mypage_tab"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="customOnClick"/>-->
 
-            </LinearLayout>
-        </RelativeLayout>
-    </ScrollView>
-    <LinearLayout
-        android:id="@+id/main_linear_bottom_bar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:orientation="horizontal">
+<!--    </LinearLayout>-->
 
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

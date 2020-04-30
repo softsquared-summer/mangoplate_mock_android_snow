@@ -1,57 +1,94 @@
 package com.example.mangoplate_snow.src.main;
 
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.mangoplate_snow.R;
 import com.example.mangoplate_snow.src.BaseActivity;
+import com.example.mangoplate_snow.src.main.community.CommunityFragment;
+import com.example.mangoplate_snow.src.main.discount.DiscountFragment;
+import com.example.mangoplate_snow.src.main.find_restaurant.FindRestaurantFragment;
 import com.example.mangoplate_snow.src.main.interfaces.MainActivityView;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+import java.util.Objects;
+
+import static androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
 
 public class MainActivity extends BaseActivity implements MainActivityView {
-    private RestaurantsRecyclerAdapter mRestaurantsRecyclerAdapter;
-    private RecyclerView mRecyclerView;
-    ArrayList<Restaurant> restaurants = new ArrayList<>();
-
+    private TabLayout mBottomTab;
+    private MainViewPager mMainViewPager;
+    private DiscountFragment mDiscountFragment;
+    private FindRestaurantFragment mFindRestaurantFragment;
+    private CommunityFragment mCommunityFragment;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initialize();
+        mMainViewPager = findViewById(R.id.main_viewpager);
+        mBottomTab = findViewById(R.id.main_bottom_tab_layout);
+        mBottomTab.setupWithViewPager(mMainViewPager);
 
-        for(int i=0; i<20; i++){
-            restaurants.add(new Restaurant("이름입니다."+i, "강남구 - 0.1235135m",
-                    "2533", "12", "2.6"));
-        }
-        mRestaurantsRecyclerAdapter.notifyDataSetChanged();
+        initViewPager();
+
+
+//        mBottomTab.addTab(mBottomTab.newTab().setText("맛집찾기"));
+
+// 탭 직접 클릭 시 사용
+//        mBottomTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) { }
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) { }
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) { }
+//        });
 
     }
-    private void initialize(){
-        mRecyclerView = findViewById(R.id.main_recyclerview_restaurant_list);
 
-        mRestaurantsRecyclerAdapter = new RestaurantsRecyclerAdapter(restaurants);
-        mRecyclerView.setAdapter(mRestaurantsRecyclerAdapter);
+    private void initViewPager() {
+        mFindRestaurantFragment = new FindRestaurantFragment(this);
+        mDiscountFragment = new DiscountFragment(this);
+        mCommunityFragment = new CommunityFragment(this);
 
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-//        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        MainFragmentPagerAdapter mainFragmentPagerAdapter = new MainFragmentPagerAdapter(getSupportFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+
+        mainFragmentPagerAdapter.addFragment(mFindRestaurantFragment, "레스토랑");
+        mainFragmentPagerAdapter.addFragment(mDiscountFragment, "할인");
+        mainFragmentPagerAdapter.addFragment(mCommunityFragment, "소식");
+
+        mMainViewPager.setAdapter(mainFragmentPagerAdapter);
+        mMainViewPager.setPagingEnabled(true);
+
+        mMainViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                }
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
     }
-
-//    private void tryGetTest(){
-//        showProgressDialog();
-//
-//        final MainService mainService = new MainService(this);
-//        mainService.getTest();
-//    }
 
     @Override
     public void validateSuccess(String text) {
@@ -63,11 +100,39 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         hideProgressDialog();
         showCustomToast(message == null || message.isEmpty() ? "네트워크 연결이 원활하지 않습니다." : message);
     }
-
 //    public void customOnClick(View view){
 //        switch (view.getId()){
-//            case R.id.main_btn_hello_world:
-//                tryGetTest();
+//            case R.id.main_btn_find_restaurant_tab:
+//                mIbFindRestaurant.setImageResource(R.drawable.ic_find_restaurant_tab_selected);
+//                mIbDiscount.setImageResource(R.drawable.ic_discount_tab);
+//                mIbCommunity.setImageResource(R.drawable.ic_community_tab);
+//                mIbMypage.setImageResource(R.drawable.ic_mypage_tab);
+//                FragmentManager fragmentManagerR = getSupportFragmentManager();
+//                FragmentTransaction fragmentTransactionR = fragmentManagerR.beginTransaction();
+//                fragmentTransaction.replace(R.id.main_frame_fragment, new FindRestaurantFragment());
+//                break;
+//            case R.id.main_btn_discount_tab:
+//                mIbFindRestaurant.setImageResource(R.drawable.ic_find_restaurant_tab);
+//                mIbDiscount.setImageResource(R.drawable.ic_discount_tab_selected);
+//                mIbCommunity.setImageResource(R.drawable.ic_community_tab);
+//                mIbMypage.setImageResource(R.drawable.ic_mypage_tab);
+//                FragmentManager fragmentManagerD = getSupportFragmentManager();
+//                FragmentTransaction fragmentTransactionD = fragmentManagerD.beginTransaction();
+//                fragmentTransaction.replace(R.id.main_frame_fragment, new EatDealFragment());
+//                break;
+//            case R.id.main_btn_community_tab:
+//                mIbFindRestaurant.setImageResource(R.drawable.ic_find_restaurant_tab);
+//                mIbDiscount.setImageResource(R.drawable.ic_discount_tab);
+//                mIbCommunity.setImageResource(R.drawable.ic_community_tab_selected);
+//                mIbMypage.setImageResource(R.drawable.ic_mypage_tab);
+//                break;
+//            case R.id.main_btn_mypage_tab:
+//                mIbFindRestaurant.setImageResource(R.drawable.ic_find_restaurant_tab);
+//                mIbDiscount.setImageResource(R.drawable.ic_discount_tab);
+//                mIbCommunity.setImageResource(R.drawable.ic_community_tab);
+//                mIbMypage.setImageResource(R.drawable.ic_mypage_tab_selected);
+//                break;
+//            case R.id.main_btn_add_tab:
 //                break;
 //            default:
 //                break;

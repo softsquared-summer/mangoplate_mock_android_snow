@@ -1,9 +1,8 @@
-package com.example.mangoplate_snow.src.main;
+package com.example.mangoplate_snow.src.main.findRestaurant;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -14,20 +13,20 @@ import com.example.mangoplate_snow.R;
 
 import java.util.ArrayList;
 
-public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<RestaurantsRecyclerAdapter.ItemViewHolder> {
-    private ArrayList<Restaurant> listData = new ArrayList<>();
+public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<RestaurantsRecyclerAdapter.RItemViewHolder> {
+    private ArrayList<Restaurant> RlistData = new ArrayList<>();
 
     public RestaurantsRecyclerAdapter(ArrayList<Restaurant> listData) {
-        this.listData = listData;
+        this.RlistData = listData;
     }
 
-    class ItemViewHolder extends RecyclerView.ViewHolder {
+    class RItemViewHolder extends RecyclerView.ViewHolder {
         //private ImageView ivRestaurantMainImg;
         private TextView tvRestaurantName, tvRestaurantDistrictAndDistance,
                 tvSeeCounter, tvReviewCounter, tvRestaurantScore;
         private ToggleButton togglebtnWannago;
 
-        public ItemViewHolder(@NonNull View itemView) {
+        public RItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
             //  ivRestaurantMainImg = itemView.findViewById(R.id.iv_restaurant_main_img);
@@ -52,18 +51,18 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
 
     @NonNull
     @Override
-    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_main, parent, false);
-        return new ItemViewHolder(view);
+        return new RItemViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        holder.onBind(listData.get(position));
+    public void onBindViewHolder(@NonNull RItemViewHolder holder, int position) {
+        holder.onBind(RlistData.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return listData.size();
+        return RlistData.size();
     }
 }

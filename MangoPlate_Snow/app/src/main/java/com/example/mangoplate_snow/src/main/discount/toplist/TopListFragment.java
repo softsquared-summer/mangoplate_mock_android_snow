@@ -21,7 +21,7 @@ public class TopListFragment extends BaseFragment implements TopListFragmentView
     private TopListRecyclerAdapter mTopListRecyclerAdapter;
     private RecyclerView mTopListRecyclerView;
     private Context mContext;
-    ArrayList<TopList> topLists = new ArrayList<>();
+    private ArrayList<TopList> mTopLists = new ArrayList<>();
 
     public TopListFragment() {
     }
@@ -35,13 +35,13 @@ public class TopListFragment extends BaseFragment implements TopListFragmentView
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_discount_toplist, container, false);
 
         mTopListRecyclerView = rootView.findViewById(R.id.toplist_recycler_list);
-        mTopListRecyclerAdapter = new TopListRecyclerAdapter(topLists);
+        mTopListRecyclerAdapter = new TopListRecyclerAdapter(mTopLists);
 
         mTopListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mTopListRecyclerView.setAdapter(mTopListRecyclerAdapter);
 
         for(int i=0; i<20; i++){
-            topLists.add(new TopList("오래된 한식당 맛집 베스트 50곳","오래된 데에는 다 이유가 있지!", "352,142", "3 일 전"));
+            mTopLists.add(new TopList("오래된 한식당 맛집 베스트 50곳","오래된 데에는 다 이유가 있지!", "352,142", "3 일 전"));
         }
         mTopListRecyclerAdapter.notifyDataSetChanged();
 

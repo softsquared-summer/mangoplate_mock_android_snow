@@ -37,21 +37,20 @@
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
 
+            <!--가격정보 받아서 넣으면 될듯 textview로 바꾸게 될 것 같음-->
             <ImageView
                 android:id="@+id/eatdeal_iv_original_price"
                 android:layout_width="80dp"
                 android:layout_height="35dp"
                 android:layout_gravity="end|bottom"
                 android:layout_marginBottom="40dp"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/test01" />
+                android:layout_marginEnd="5dp"/>
 
             <ImageView
                 android:id="@+id/eatdeal_iv_discounted_price"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
-                android:layout_gravity="end|bottom"
-                android:background="@drawable/test1" />
+                android:layout_gravity="end|bottom"/>
         </FrameLayout>
 
         <LinearLayout

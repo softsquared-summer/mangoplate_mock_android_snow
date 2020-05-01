@@ -2,9 +2,12 @@ package com.example.mangoplate_snow.src.main.find_restaurant;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,11 +20,12 @@ import com.example.mangoplate_snow.src.main.find_restaurant.interfaces.FindResta
 
 import java.util.ArrayList;
 
-public class FindRestaurantFragment extends BaseFragment implements FindRestaurantFragmentView {
+public class FindRestaurantFragment extends BaseFragment implements FindRestaurantFragmentView, View.OnClickListener {
     private RestaurantsRecyclerAdapter mRestaurantsRecyclerAdapter;
     private RecyclerView mRestaurantRecyclerView;
     ArrayList<Restaurant> restaurants = new ArrayList<>();
     private Context mContext;
+    private Button mFindRestaurantBtnDistrict;
 
     public FindRestaurantFragment() {
     }
@@ -35,6 +39,7 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_find_restaurant, container, false);
 
         mRestaurantRecyclerView = rootView.findViewById(R.id.frag_find_restaurant_recyclerview_restaurant_list);
+        mFindRestaurantBtnDistrict = rootView.findViewById(R.id.frag_find_restaurant_btn_district);
         mRestaurantsRecyclerAdapter = new RestaurantsRecyclerAdapter(restaurants);
         mRestaurantRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mRestaurantRecyclerView.setAdapter(mRestaurantsRecyclerAdapter);
@@ -47,6 +52,19 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
 
         FindRestaurantRecyclerViewDecoration space = new FindRestaurantRecyclerViewDecoration(20);
         mRestaurantRecyclerView.addItemDecoration(space);
+
+        mFindRestaurantBtnDistrict.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("click", "click");
+                Bundle args = new Bundle();
+                args.putString("key", "value");
+                SelectDistrictDialog selectDistrictDialog = new SelectDistrictDialog();
+                selectDistrictDialog.setArguments(args);
+                selectDistrictDialog.show(getActivity().getSupportFragmentManager(), "tag");
+                Log.e("show", "show");
+            }
+        });
 
         return rootView;
     }
@@ -63,13 +81,35 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
 
 //    public void customOnClick(View view){
 //        switch (view.getId()){
-//            case R.id.main_btn_hello_world:
-//                tryGetTest();
+//            case R.id.frag_find_restaurant_btn_district:
+//                Bundle args = new Bundle();
+//                args.putString("key", "value");
+//                SelectDistrictDialog selectDistrictDialog = new SelectDistrictDialog();
+//                selectDistrictDialog.setArguments(args);
+//                selectDistrictDialog.show(getActivity().getSupportFragmentManager(), "tag");
 //                break;
 //            default:
 //                break;
 //        }
 //    }
+
+    @Override
+    public void onClick(View view) {
+//        Log.e("click", "click");
+//        switch(view.getId()){
+//            case R.id.frag_find_restaurant_btn_district:
+//                Log.e("incase", "incase");
+//                Bundle args = new Bundle();
+//                args.putString("key", "value");
+//                SelectDistrictDialog selectDistrictDialog = new SelectDistrictDialog();
+//                selectDistrictDialog.setArguments(args);
+//                selectDistrictDialog.show(getActivity().getSupportFragmentManager(), "tag");
+//                Log.e("show", "show");
+//                break;
+//            default:
+//                break;
+//        }
+    }
 }
 
 

@@ -4,4 +4,7 @@
     <string name="nework_error">네트워크 연결이 원활하지 않습니다.</string>
 
     <string name="district_now">지금 보고있는 지역은</string>
+    <string name="like">좋아요</string>
+    <string name="comment">댓글</string>
+    <string name="wannago">가고싶다</string>
 </resources>

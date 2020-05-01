@@ -15,6 +15,7 @@ import com.example.mangoplate_snow.src.main.community.CommunityFragment;
 import com.example.mangoplate_snow.src.main.discount.DiscountFragment;
 import com.example.mangoplate_snow.src.main.find_restaurant.FindRestaurantFragment;
 import com.example.mangoplate_snow.src.main.interfaces.MainActivityView;
+import com.example.mangoplate_snow.src.main.my_page.MyPageFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     private MainViewPager mMainViewPager;
     private DiscountFragment mDiscountFragment;
     private FindRestaurantFragment mFindRestaurantFragment;
+    private MyPageFragment mMyPageFragment;
     private CommunityFragment mCommunityFragment;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,12 +60,14 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         mFindRestaurantFragment = new FindRestaurantFragment(this);
         mDiscountFragment = new DiscountFragment(this);
         mCommunityFragment = new CommunityFragment(this);
+        mMyPageFragment = new MyPageFragment(this);
 
         MainFragmentPagerAdapter mainFragmentPagerAdapter = new MainFragmentPagerAdapter(getSupportFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
 
         mainFragmentPagerAdapter.addFragment(mFindRestaurantFragment, "레스토랑");
         mainFragmentPagerAdapter.addFragment(mDiscountFragment, "할인");
         mainFragmentPagerAdapter.addFragment(mCommunityFragment, "소식");
+        mainFragmentPagerAdapter.addFragment(mMyPageFragment, "내정보");
 
         mMainViewPager.setAdapter(mainFragmentPagerAdapter);
         mMainViewPager.setPagingEnabled(true);
@@ -81,6 +85,8 @@ public class MainActivity extends BaseActivity implements MainActivityView {
                     case 1:
                         break;
                     case 2:
+                        break;
+                    case 3:
                         break;
                 }
             }

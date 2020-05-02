@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -134,7 +135,9 @@ public class DiscountFragment extends BaseFragment implements DiscountFragmentVi
         hideProgressDialog();
         showCustomToast(message == null || message.isEmpty() ? "네트워크 연결이 원활하지 않습니다." : message);
     }
-
+    public void whereami(double lat, double lon){
+        Toast.makeText(mContext, "위도 : " +lat+"경도 : " + lon, Toast.LENGTH_SHORT).show();
+    }
 //    private void initViewPager() {
 //        mEatDealFragment = new EatDealFragment(getContext());
 //        mTopListFragment = new TopListFragment(getContext());

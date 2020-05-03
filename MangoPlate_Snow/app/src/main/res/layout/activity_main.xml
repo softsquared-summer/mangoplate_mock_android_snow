@@ -24,7 +24,7 @@
 <!--        app:layout_constraintTop_toTopOf="parent">-->
 <!--    </androidx.viewpager.widget.ViewPager>-->
 
-    <com.example.mangoplate_snow.src.main.MainViewPager
+    <com.softsquared.mangoplate_snow.src.main.MainViewPager
         android:id="@+id/main_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

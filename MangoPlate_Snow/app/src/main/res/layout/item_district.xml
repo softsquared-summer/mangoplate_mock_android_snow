@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <Button
+        android:id="@+id/district_btn"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:text="건대/군자/광진"
+        android:textColor="@color/colorNotSelected"
+        android:background="@drawable/button_border_light_gray"/>
+</RelativeLayout>

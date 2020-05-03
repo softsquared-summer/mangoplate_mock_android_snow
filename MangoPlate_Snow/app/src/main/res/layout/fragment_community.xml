@@ -77,10 +77,9 @@
             android:layout_marginStart="10dp"
             android:stateListAnimator="@null"/>
     </LinearLayout>
-    <FrameLayout
-        android:id="@+id/community_frame"
+    <com.softsquared.mangoplate_snow.src.main.community.CommunityViewPager
+        android:id="@+id/community_view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/colorLighterThanNotSelected"/>
+        android:layout_weight="1"/>
 </LinearLayout>

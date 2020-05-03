@@ -20,4 +20,6 @@
     <string name="setting">설정</string>
     <string name="review">리뷰</string>
     <string name="photo">사진</string>
+    <string name="adjust">편집</string>
+    <string name="adjust_cancle">편집 취소</string>
 </resources>

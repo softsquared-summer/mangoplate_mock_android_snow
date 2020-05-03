@@ -1,11 +1,13 @@
 package com.softsquared.mangoplate_snow.src.main;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,26 +37,57 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     private GpsInfo gpsInfo;
 
     private TabLayout mBottomTab;
+    private ImageView mIvFindRestaurantIcon, mIvFindRestaurantIconS, mIvDiscountIcon, mIvDiscountIconS, mIvCommunityIcon, mIvCommunityIconS, mIvMypageIcon, mIvMypageIconS;
     private MainViewPager mMainViewPager;
     private DiscountFragment mDiscountFragment;
+ //   private EmptyFragment mEmptyFragment;
     private FindRestaurantFragment mFindRestaurantFragment;
     private MyPageFragment mMyPageFragment;
     private CommunityFragment mCommunityFragment;
 
-
+   @SuppressLint("ResourceType")
    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
 
-        callPermission();
-        settingGPS();
+       callPermission();
+       settingGPS();
 
-        mMainViewPager = findViewById(R.id.main_viewpager);
-        mBottomTab = findViewById(R.id.main_bottom_tab_layout);
-        mBottomTab.setupWithViewPager(mMainViewPager);
+       mMainViewPager = findViewById(R.id.main_viewpager);
+       mBottomTab = findViewById(R.id.main_bottom_tab_layout);
+       mBottomTab.setupWithViewPager(mMainViewPager);
+       mBottomTab.setTabGravity(TabLayout.GRAVITY_FILL);
+//
+//       mIvFindRestaurantIcon = new ImageView(this);
+//       mIvDiscountIcon = new ImageView(this);
+//       mIvCommunityIcon = new ImageView(this);
+//       mIvMypageIcon = new ImageView(this);
+//
+//       mIvFindRestaurantIconS = new ImageView(this);
+//       mIvDiscountIconS = new ImageView(this);
+//       mIvCommunityIconS = new ImageView(this);
+//       mIvMypageIconS = new ImageView(this);
+//
+//       mIvFindRestaurantIcon.setImageResource(R.drawable.ic_find_restaurant_tab);
+//       mIvDiscountIcon.setImageResource(R.drawable.ic_discount_tab);
+//       mIvCommunityIcon.setImageResource(R.drawable.ic_community_tab);
+//       mIvMypageIcon.setImageResource(R.drawable.ic_mypage_tab);
+//
+//       mIvFindRestaurantIconS.setImageResource(R.drawable.ic_find_restaurant_tab_selected);
+//       mIvDiscountIconS.setImageResource(R.drawable.ic_discount_tab_selected);
+//       mIvCommunityIconS.setImageResource(R.drawable.ic_community_tab_selected);
+//       mIvMypageIconS.setImageResource(R.drawable.ic_mypage_tab_selected);
 
-        initViewPager();
+//       mIvFindRestaurantIcon.setScaleType(ImageView.ScaleType.CENTER);
+//       mIvDiscountIcon.setScaleType(ImageView.ScaleType.CENTER);
+//       mIvCommunityIcon.setScaleType(ImageView.ScaleType.CENTER);
+//       mIvMypageIcon.setScaleType(ImageView.ScaleType.CENTER);
+
+       initViewPager();
+
+//       mBottomTab.getTabAt(0).setIcon(R.drawable.ic_find_restaurant_tab_selected);
+
 
 //        mBottomTab.addTab(mBottomTab.newTab().setText("맛집찾기"));
 
@@ -94,14 +127,23 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         mMyPageFragment = new MyPageFragment(this);
 
         MainFragmentPagerAdapter mainFragmentPagerAdapter = new MainFragmentPagerAdapter(getSupportFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        mainFragmentPagerAdapter.addFragment(mFindRestaurantFragment, "레스토랑");
+        mainFragmentPagerAdapter.addFragment(mFindRestaurantFragment);
         mFindRestaurantFragment.whereami(lat, lon);
-        mainFragmentPagerAdapter.addFragment(mDiscountFragment, "할인");
-        mainFragmentPagerAdapter.addFragment(mCommunityFragment, "소식");
-        mainFragmentPagerAdapter.addFragment(mMyPageFragment, "내정보");
+        mainFragmentPagerAdapter.addFragment(mDiscountFragment);
+        mainFragmentPagerAdapter.addFragment(mCommunityFragment);
+        mainFragmentPagerAdapter.addFragment(mMyPageFragment);
 
         mMainViewPager.setAdapter(mainFragmentPagerAdapter);
         mMainViewPager.setPagingEnabled(true);
+
+//        mBottomTab.getTabAt(0).setCustomView(mIvFindRestaurantIconS);
+//        mBottomTab.getTabAt(1).setCustomView(mIvDiscountIcon);
+//        mBottomTab.getTabAt(2).setCustomView(mIvCommunityIcon);
+//        mBottomTab.getTabAt(3).setCustomView(mIvMypageIcon);
+        mBottomTab.getTabAt(0).setIcon(R.drawable.ic_find_restaurant_tab_selected);
+        mBottomTab.getTabAt(1).setIcon(R.drawable.ic_discount_tab);
+        mBottomTab.getTabAt(2).setIcon(R.drawable.ic_community_tab);
+        mBottomTab.getTabAt(3).setIcon(R.drawable.ic_mypage_tab);
 
         mMainViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -110,17 +152,33 @@ public class MainActivity extends BaseActivity implements MainActivityView {
 
             @Override
             public void onPageSelected(int position) {
+
+//                mBottomTab.getTabAt(0).setCustomView(mIvFindRestaurantIcon);
+//                mBottomTab.getTabAt(1).setCustomView(mIvDiscountIcon);
+//                mBottomTab.getTabAt(2).setCustomView(mIvCommunityIcon);
+//                mBottomTab.getTabAt(3).setCustomView(mIvMypageIcon);
+
+                mBottomTab.getTabAt(0).setIcon(R.drawable.ic_find_restaurant_tab);
+                mBottomTab.getTabAt(1).setIcon(R.drawable.ic_discount_tab);
+                mBottomTab.getTabAt(2).setIcon(R.drawable.ic_community_tab);
+                mBottomTab.getTabAt(3).setIcon(R.drawable.ic_mypage_tab);
+
                 switch (position) {
                     case 0:
                         mFindRestaurantFragment.whereami(lat, lon);
+                        mBottomTab.getTabAt(0).setIcon(R.drawable.ic_find_restaurant_tab_selected);
                         break;
                     case 1:
                         mDiscountFragment.whereami(lat, lon);
+                        mBottomTab.getTabAt(1).setIcon(R.drawable.ic_discount_tab_selected);
                         break;
                     case 2:
-
+                        mBottomTab.getTabAt(2).setIcon(R.drawable.ic_community_tab_selected);
                         break;
                     case 3:
+                        mBottomTab.getTabAt(3).setIcon(R.drawable.ic_mypage_tab_selected);
+                        break;
+                    default:
                         break;
                 }
             }
@@ -143,6 +201,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
             isPermission = true;
        }
     }
+
     private void callPermission(){
        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                && checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)

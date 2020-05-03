@@ -1,45 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorMainTheme">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+    android:background="@color/colorMainTheme"
+    android:gravity="center">
         <ImageView
             android:id="@+id/login_iv_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/img_login_logo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:src="@drawable/img_login_logo"/>
         <ImageView
             android:id="@+id/login_iv_korean_blabla"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_iv_logo"
             android:layout_marginTop="20dp"
             android:src="@drawable/img_login_korean_blabla" />
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_btn_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
         <ImageButton
             android:id="@+id/login_ib_facebook"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_iv_korean_blabla"
-            android:layout_marginTop="50dp" />
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:src="@drawable/button_login_facebook"
+            android:scaleType="fitCenter"
+            android:background="#00ff0000"
+            android:layout_marginTop="50dp"/>
         <ImageButton
             android:id="@+id/login_ib_kakao"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_ib_facebook"
-            android:layout_marginTop="10dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</RelativeLayout>
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:src="@drawable/button_login_kakao"
+            android:scaleType="fitCenter"
+            android:background="#00ff0000"
+            android:layout_marginBottom="40dp"/>
+</LinearLayout>

@@ -21,5 +21,7 @@
     <string name="review">리뷰</string>
     <string name="photo">사진</string>
     <string name="adjust">편집</string>
-    <string name="adjust_cancle">편집 취소</string>
+    <string name="adjust_cancel">편집 취소</string>
+    
+    <string name="facebook_app_id">249206476346989</string>
 </resources>

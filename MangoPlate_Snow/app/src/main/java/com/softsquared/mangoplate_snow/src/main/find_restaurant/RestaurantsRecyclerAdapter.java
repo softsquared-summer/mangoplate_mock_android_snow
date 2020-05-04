@@ -1,6 +1,7 @@
 package com.softsquared.mangoplate_snow.src.main.find_restaurant;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.softsquared.mangoplate_snow.R;
+import com.softsquared.mangoplate_snow.src.main.restaurant_detail.RestaurantDetailActivity;
 
 import java.util.ArrayList;
 
@@ -47,7 +49,13 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "아이템은 "+getAdapterPosition()+"번째", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, RestaurantDetailActivity.class);
+                    intent.putExtra("restaurant_name", tvRestaurantName.getText().toString());
+                    intent.putExtra("see_counter", tvSeeCounter.getText().toString());
+                    intent.putExtra("review_counter", tvReviewCounter.getText().toString());
+                    intent.putExtra("restaurant_score", tvRestaurantScore.getText().toString());
+                    intent.putExtra("is_wannago", togglebtnWannago.isChecked());
+                    context.startActivity(intent);
                 }
             });
         }

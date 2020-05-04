@@ -87,10 +87,47 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
             }
         }, DELAY, PERIOD);
 
-        for(int i=0; i<20; i++){
-            restaurants.add(new Restaurant("이름입니다."+i, "강남구 - 0.1235135m",
-                    "2533", "12", "2.6"));
-        }
+            restaurants.add(new Restaurant("1. 잔치국수 전문점", "화성싱 - 300.6m",
+                    "353", "532", "3.6", R.drawable.test1));
+            restaurants.add(new Restaurant("2. 마라탕 전문점", "화성시 - 513.5m",
+                    "232", "43", "3.4", R.drawable.test2));
+            restaurants.add(new Restaurant("3. 닭도리탕 전문점", "화성시 - 1.35km",
+                    "6767", "44", "4.2", R.drawable.test3));
+            restaurants.add(new Restaurant("4. 모밀 전문점", "화성시 - 1.6km",
+                    "123123", "1454", "3.8", R.drawable.test4));
+            restaurants.add(new Restaurant("5. 삼계탕 전문점", "화성시 - 2.1km",
+                    "2342", "232", "3.9", R.drawable.test5));
+        restaurants.add(new Restaurant("6. 잔치국수 전문점", "화성싱 - 300.6m",
+                "353", "532", "3.6", R.drawable.test1));
+        restaurants.add(new Restaurant("7. 마라탕 전문점", "화성시 - 513.5m",
+                "232", "43", "3.4", R.drawable.test2));
+        restaurants.add(new Restaurant("8. 닭도리탕 전문점", "화성시 - 1.35km",
+                "6767", "44", "4.2", R.drawable.test3));
+        restaurants.add(new Restaurant("9. 모밀 전문점", "화성시 - 1.6km",
+                "123123", "1454", "3.8", R.drawable.test4));
+        restaurants.add(new Restaurant("10. 삼계탕 전문점", "화성시 - 2.1km",
+                "2342", "232", "3.9", R.drawable.test5));
+        restaurants.add(new Restaurant("11. 잔치국수 전문점", "화성싱 - 300.6m",
+                "353", "532", "3.6", R.drawable.test1));
+        restaurants.add(new Restaurant("12. 마라탕 전문점", "화성시 - 513.5m",
+                "232", "43", "3.4", R.drawable.test2));
+        restaurants.add(new Restaurant("13. 닭도리탕 전문점", "화성시 - 1.35km",
+                "6767", "44", "4.2", R.drawable.test3));
+        restaurants.add(new Restaurant("14. 모밀 전문점", "화성시 - 1.6km",
+                "123123", "1454", "3.8", R.drawable.test4));
+        restaurants.add(new Restaurant("15. 삼계탕 전문점", "화성시 - 2.1km",
+                "2342", "232", "3.9", R.drawable.test5));
+        restaurants.add(new Restaurant("16. 잔치국수 전문점", "화성싱 - 300.6m",
+                "353", "532", "3.6", R.drawable.test1));
+        restaurants.add(new Restaurant("17. 마라탕 전문점", "화성시 - 513.5m",
+                "232", "43", "3.4", R.drawable.test2));
+        restaurants.add(new Restaurant("18. 닭도리탕 전문점", "화성시 - 1.35km",
+                "6767", "44", "4.2", R.drawable.test3));
+        restaurants.add(new Restaurant("19. 모밀 전문점", "화성시 - 1.6km",
+                "123123", "1454", "3.8", R.drawable.test4));
+        restaurants.add(new Restaurant("20. 삼계탕 전문점", "화성시 - 2.1km",
+                "2342", "232", "3.9", R.drawable.test5));
+
         mRestaurantsRecyclerAdapter.notifyDataSetChanged();
         FindRestaurantRecyclerViewDecoration space = new FindRestaurantRecyclerViewDecoration(20);
         mRestaurantRecyclerView.addItemDecoration(space);
@@ -120,17 +157,6 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
         return rootView;
     }
 
-    public void initViewPager(){
-
-    }
-
-    //                Log.e("click", "click");
-//                Bundle args = new Bundle();
-//                args.putString("key", "value");
-//                SelectDistrictDialog selectDistrictDialog = new SelectDistrictDialog();
-//                selectDistrictDialog.setArguments(args);
-//                selectDistrictDialog.show(getActivity().getSupportFragmentManager(), "tag");
-//                Log.e("show", "show");
     @Override
     public void validateSuccess(String text) {
         hideProgressDialog();
@@ -160,23 +186,6 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
 //        }
 //    }
 
-//    @Override
-//    public void onClick(View view) {
-//        Log.e("click", "click");
-//        switch(view.getId()){
-//            case R.id.frag_find_restaurant_btn_district:
-//                Log.e("incase", "incase");
-//                Bundle args = new Bundle();
-//                args.putString("key", "value");
-//                SelectDistrictDialog selectDistrictDialog = new SelectDistrictDialog();
-//                selectDistrictDialog.setArguments(args);
-//                selectDistrictDialog.show(getActivity().getSupportFragmentManager(), "tag");
-//                Log.e("show", "show");
-//                break;
-//            default:
-//                break;
-//        }
-//    }
 }
 
 

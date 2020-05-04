@@ -1,113 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="260dp">
-    <RelativeLayout
-        android:layout_width="190dp"
-        android:layout_height="250dp">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="185dp"
+        android:layout_height="245dp"
+        android:orientation="vertical">
+
         <FrameLayout
             android:id="@+id/frame_restaurant_img_and_togglebtn"
             android:layout_width="match_parent"
             android:layout_height="190dp">
+
             <ImageView
                 android:id="@+id/iv_restaurant_main_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#000000"/>
+                android:scaleType="centerCrop"/>
+
             <ToggleButton
                 android:id="@+id/togglebtn_wanna_go"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:background="@drawable/toggle_wanna_go_selector"
-                android:textOn=""
-                android:textOff=""
                 android:layout_gravity="end"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"/>
+                android:background="@drawable/toggle_wanna_go_selector"
+                android:textOff=""
+                android:textOn="" />
         </FrameLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_below="@id/frame_restaurant_img_and_togglebtn"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true">
-            <TextView
-                android:id="@+id/tv_restaurant_name"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:text="wefaswefwefwefwe,m,mfwefw"
-                android:textColor="#000000"
-                android:textSize="15dp"
-                android:layout_marginTop="5dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-            <TextView
-                android:id="@+id/tv_restaurant_district_and_distance"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:gravity="center_vertical"
-                app:layout_constraintTop_toBottomOf="@id/tv_restaurant_name"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="강남구"
-                android:textSize="11dp"/>
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
             <LinearLayout
-                android:id="@+id/linear_see_and_review_count"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/tv_restaurant_district_and_distance"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-                <ImageView
-                    android:id="@+id/iv_icon_see_counter"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/ic_see_counter" />
-                <TextView
-                    android:id="@+id/tv_see_counter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="3dp"
-                    android:textSize="11dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
-                <ImageView
-                    android:id="@+id/iv_icon_review_counter"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/ic_review_counter"
-                    android:gravity="center" />
-                <TextView
-                    android:id="@+id/tv_review_counter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="3dp"
-                    android:textSize="11dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
-            </LinearLayout>
-            <TextView
-                android:id="@+id/tv_restaurant_score"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_restaurant_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1.5"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="wefaswefwefwefwe,m,mfwefw"
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_restaurant_district_and_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="강남구"
+                    android:textSize="11dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_restaurant_name" />
+
+                <LinearLayout
+                    android:id="@+id/linear_see_and_review_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_restaurant_district_and_distance">
+
+                    <ImageView
+                        android:id="@+id/iv_icon_see_counter"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/ic_see_counter" />
+
+                    <TextView
+                        android:id="@+id/tv_see_counter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="3dp"
+                        android:gravity="center"
+                        android:textSize="11dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_icon_review_counter"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/ic_review_counter"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:id="@+id/tv_review_counter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="3dp"
+                        android:gravity="center"
+                        android:textSize="11dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_restaurant_score"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
                 android:gravity="center"
-                android:textSize="25dp"
                 android:text="4.5"
-                android:visibility="gone"
+                android:textSize="23dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-<!--        </LinearLayout>-->
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </RelativeLayout>
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--        </LinearLayout>-->
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

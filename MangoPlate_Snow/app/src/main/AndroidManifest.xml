@@ -30,6 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.softsquared.mangoplate_snow.src.login.LoginActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".src.main.restaurant_detail.RestaurantDetailActivity" />
     </application>
 
 </manifest>

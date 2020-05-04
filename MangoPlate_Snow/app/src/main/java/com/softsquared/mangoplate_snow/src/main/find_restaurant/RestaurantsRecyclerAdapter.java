@@ -1,9 +1,13 @@
 package com.softsquared.mangoplate_snow.src.main.find_restaurant;
 
+import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
@@ -24,6 +28,7 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
         //private ImageView ivRestaurantMainImg;
         private TextView tvRestaurantName, tvRestaurantDistrictAndDistance,
                 tvSeeCounter, tvReviewCounter, tvRestaurantScore;
+        private ImageView ivRestaurantImg;
         private ToggleButton togglebtnWannago;
 
         public RItemViewHolder(@NonNull View itemView) {
@@ -36,6 +41,15 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
             tvReviewCounter = itemView.findViewById(R.id.tv_review_counter);
             tvRestaurantScore = itemView.findViewById(R.id.tv_restaurant_score);
             togglebtnWannago = itemView.findViewById(R.id.togglebtn_wanna_go);
+            ivRestaurantImg = itemView.findViewById(R.id.iv_restaurant_main_img);
+
+            final Context context = itemView.getContext();
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "아이템은 "+getAdapterPosition()+"번째", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         void onBind(Restaurant restaurant) {
@@ -46,6 +60,7 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
             tvReviewCounter.setText(restaurant.getReviewCounter());
             tvRestaurantScore.setText(restaurant.getRestaurantScore());
             togglebtnWannago.setChecked(restaurant.isToggleWannago());
+            ivRestaurantImg.setImageResource(restaurant.getImgUrl());
         }
     }
 

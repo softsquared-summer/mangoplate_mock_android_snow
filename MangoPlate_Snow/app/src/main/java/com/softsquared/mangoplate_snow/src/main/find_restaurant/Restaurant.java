@@ -5,17 +5,17 @@ public class Restaurant {
     private String districtAndDistance;
     private String seeCounter;
     private String reviewCounter;
-    //private URL restaurantImgUrl;
     private String restaurantScore;
     private boolean toggleWannago;
+    private int imgUrl;             //임시 이미지
 
-    public Restaurant(String restaurantName, String districtAndDistance, String seeCounter, String reviewCounter, String restaurantScore) {
+    public Restaurant(String restaurantName, String districtAndDistance, String seeCounter, String reviewCounter, String restaurantScore, int imgUrl) {
         this.restaurantName = restaurantName;
         this.districtAndDistance = districtAndDistance;
         this.seeCounter = seeCounter;
         this.reviewCounter = reviewCounter;
-       // this.restaurantImgUrl = restaurantImgUrl;
         this.restaurantScore = restaurantScore;
+        this.imgUrl = imgUrl;
     }
 
     public String getRestaurantName() {
@@ -50,14 +50,6 @@ public class Restaurant {
         this.reviewCounter = reviewCounter;
     }
 
-//    public URL getRestaurantImgUrl() {
-//        return restaurantImgUrl;
-//    }
-//
-//    public void setRestaurantImgUrl(URL restaurantImgUrl) {
-//        this.restaurantImgUrl = restaurantImgUrl;
-//    }
-
     public String getRestaurantScore() {
         return restaurantScore;
     }
@@ -71,5 +63,13 @@ public class Restaurant {
 
     public void setToggleWannago(boolean toggleWannago) {
         this.toggleWannago = toggleWannago;
+    }
+
+    public int getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(int imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

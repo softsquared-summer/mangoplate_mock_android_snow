@@ -9,16 +9,24 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.softsquared.mangoplate_snow.R;
 import com.softsquared.mangoplate_snow.src.BaseActivity;
 import com.softsquared.mangoplate_snow.src.main.restaurant_detail.interfaces.RestaurantDetailActivityView;
 
-public class RestaurantDetailActivity extends BaseActivity implements RestaurantDetailActivityView {
+public class RestaurantDetailActivity extends BaseActivity implements RestaurantDetailActivityView, OnMapReadyCallback {
 
     private TextView mRestaurantDetailName, mRestaurantDetailSeeCounter, mRestaurantDetailWannagoCounter, mRestaurantDetailReviewCounter,
                    mRestaurantDetailScore;
     private LinearLayout mRestaurantDetailBtnWannago, mRestaurantDetailBtnVisited, mRestaurantDetailBtnWriteReview, mRestaurantDetailBtnMylist;
     private ImageView mRestaurantDetailWannagoIv;
+    private GoogleMap mGoogleMap;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,7 +57,8 @@ public class RestaurantDetailActivity extends BaseActivity implements Restaurant
         if(isWannagoChecked)
             mRestaurantDetailWannagoIv.setImageResource(R.drawable.ic_wanna_go_orange_selected);
 
-
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.restaurant_detail_map);
+        mapFragment.getMapAsync(this);
     }
 
     @Override
@@ -60,5 +69,25 @@ public class RestaurantDetailActivity extends BaseActivity implements Restaurant
     @Override
     public void validateFailure(String message) {
 
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mGoogleMap = googleMap;
+        LatLng coordinate = null;
+        MarkerOptions marker;
+
+        if(mRestaurantDetailName.getText().equals("세야스시")) {
+            coordinate = new LatLng(127.072371, 37.2028944);
+        }
+        marker = new MarkerOptions();
+        marker.position(coordinate);
+        marker.alpha(0.8f);
+        marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+        mGoogleMap.addMarker(marker);
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(coordinate));
+        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+
+//https://medium.com/@logishudson0218/%EC%A7%80%EB%8F%84-api-01-72510b25e4bd
     }
 }

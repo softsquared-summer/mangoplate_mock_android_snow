@@ -16,11 +16,13 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.bumptech.glide.Glide;
 import com.softsquared.mangoplate_snow.R;
 import com.softsquared.mangoplate_snow.src.BaseFragment;
 import com.softsquared.mangoplate_snow.src.login.LoginActivity;
 import com.softsquared.mangoplate_snow.src.main.MainActivity;
 import com.softsquared.mangoplate_snow.src.main.find_restaurant.interfaces.FindRestaurantFragmentView;
+import com.softsquared.mangoplate_snow.src.main.find_restaurant.models.FindRestaurantListResponse;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -37,6 +39,7 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
     private TopBannerPagerAdapter mTopBannerPagerAdapter;
    // private TabLayout mBannerTab;
 
+    private FindRestaurantService findRestaurantService;
 
     private ImageButton test;
 
@@ -56,6 +59,7 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_find_restaurant, container, false);
 
+        findRestaurantService = new FindRestaurantService(this);
 
         mRestaurantRecyclerView = rootView.findViewById(R.id.frag_find_restaurant_recyclerview_restaurant_list);
         mFindRestaurantBtnDistrict = rootView.findViewById(R.id.frag_find_restaurant_btn_district);
@@ -87,47 +91,7 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
             }
         }, DELAY, PERIOD);
 
-            restaurants.add(new Restaurant("1. 잔치국수 전문점", "화성싱 - 300.6m",
-                    "353", "532", "3.6", R.drawable.test1));
-            restaurants.add(new Restaurant("2. 마라탕 전문점", "화성시 - 513.5m",
-                    "232", "43", "3.4", R.drawable.test2));
-            restaurants.add(new Restaurant("3. 닭도리탕 전문점", "화성시 - 1.35km",
-                    "6767", "44", "4.2", R.drawable.test3));
-            restaurants.add(new Restaurant("4. 모밀 전문점", "화성시 - 1.6km",
-                    "123123", "1454", "3.8", R.drawable.test4));
-            restaurants.add(new Restaurant("5. 삼계탕 전문점", "화성시 - 2.1km",
-                    "2342", "232", "3.9", R.drawable.test5));
-        restaurants.add(new Restaurant("6. 잔치국수 전문점", "화성싱 - 300.6m",
-                "353", "532", "3.6", R.drawable.test1));
-        restaurants.add(new Restaurant("7. 마라탕 전문점", "화성시 - 513.5m",
-                "232", "43", "3.4", R.drawable.test2));
-        restaurants.add(new Restaurant("8. 닭도리탕 전문점", "화성시 - 1.35km",
-                "6767", "44", "4.2", R.drawable.test3));
-        restaurants.add(new Restaurant("9. 모밀 전문점", "화성시 - 1.6km",
-                "123123", "1454", "3.8", R.drawable.test4));
-        restaurants.add(new Restaurant("10. 삼계탕 전문점", "화성시 - 2.1km",
-                "2342", "232", "3.9", R.drawable.test5));
-        restaurants.add(new Restaurant("11. 잔치국수 전문점", "화성싱 - 300.6m",
-                "353", "532", "3.6", R.drawable.test1));
-        restaurants.add(new Restaurant("12. 마라탕 전문점", "화성시 - 513.5m",
-                "232", "43", "3.4", R.drawable.test2));
-        restaurants.add(new Restaurant("13. 닭도리탕 전문점", "화성시 - 1.35km",
-                "6767", "44", "4.2", R.drawable.test3));
-        restaurants.add(new Restaurant("14. 모밀 전문점", "화성시 - 1.6km",
-                "123123", "1454", "3.8", R.drawable.test4));
-        restaurants.add(new Restaurant("15. 삼계탕 전문점", "화성시 - 2.1km",
-                "2342", "232", "3.9", R.drawable.test5));
-        restaurants.add(new Restaurant("16. 잔치국수 전문점", "화성싱 - 300.6m",
-                "353", "532", "3.6", R.drawable.test1));
-        restaurants.add(new Restaurant("17. 마라탕 전문점", "화성시 - 513.5m",
-                "232", "43", "3.4", R.drawable.test2));
-        restaurants.add(new Restaurant("18. 닭도리탕 전문점", "화성시 - 1.35km",
-                "6767", "44", "4.2", R.drawable.test3));
-        restaurants.add(new Restaurant("19. 모밀 전문점", "화성시 - 1.6km",
-                "123123", "1454", "3.8", R.drawable.test4));
-        restaurants.add(new Restaurant("20. 삼계탕 전문점", "화성시 - 2.1km",
-                "2342", "232", "3.9", R.drawable.test5));
-
+//        tryGetRestaurantList();
         mRestaurantsRecyclerAdapter.notifyDataSetChanged();
         FindRestaurantRecyclerViewDecoration space = new FindRestaurantRecyclerViewDecoration(20);
         mRestaurantRecyclerView.addItemDecoration(space);
@@ -154,9 +118,33 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
                 startActivity(intent);
             }
         });
+        
+        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
+                "1215", 54, 3.8, "orange"));
+        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
+                "1215", 54, 3.8, "orange"));
+        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
+                "1215", 54, 3.8, "gray"));
+        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
+                "1215", 54, 3.8, "orange"));
+        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
+                "1215", 54, 3.8, "null"));
+        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
+                "1215", 54, 3.8, "orange"));
+
+
+//        restaurants.add(new Restaurant(restaurantListResult.getArea(), restaurantListResult.getImg(), restaurantListResult.getStar(), restaurantListResult.getTitle(), restaurantListResult.getDistance(),
+//                restaurantListResult.getSeenNum(), restaurantListResult.getReviewNum(), restaurantListResult.getRating(), restaurantListResult.getRatingColor()));
+
+
         return rootView;
     }
 
+//    private void tryGetRestaurantList(){
+//        showProgressDialog();
+//
+//        findRestaurantService.tryGetRestaurantList();
+//    }
     @Override
     public void validateSuccess(String text) {
         hideProgressDialog();
@@ -167,6 +155,18 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
         hideProgressDialog();
         showCustomToast(message == null || message.isEmpty() ? "네트워크 연결이 원활하지 않습니다." : message);
     }
+
+//    @Override
+//    public void getRestaurantListSuccess(FindRestaurantListResponse.RestaurantListResult restaurantListResult) {
+//        hideProgressDialog();
+////        Log.e("ddd", restaurantListResult.getArea() + "\n"+ restaurantListResult.getImg() + "\n"+ restaurantListResult.getStar() + "\n"+ restaurantListResult.getTitle() + "\n"+ restaurantListResult.getDistance() + "\n"+
+////                restaurantListResult.getSeenNum() + "\n"+ restaurantListResult.getReviewNum() + "\n"+ restaurantListResult.getRating() + "\n"+ restaurantListResult.getRatingColor());
+//        Log.e("dpd", restaurantListResult.getArea());
+//        restaurants.add(new Restaurant(restaurantListResult.getArea(), restaurantListResult.getImg(), restaurantListResult.getStar(), restaurantListResult.getTitle(), restaurantListResult.getDistance(),
+//                restaurantListResult.getSeenNum(), restaurantListResult.getReviewNum(), restaurantListResult.getRating(), restaurantListResult.getRatingColor()));
+//    }
+
+
     public void whereami(double lat, double lon){
         Log.e("fr", "위도 : "+lat);
         Log.e("fr", "경도 : "+lon);

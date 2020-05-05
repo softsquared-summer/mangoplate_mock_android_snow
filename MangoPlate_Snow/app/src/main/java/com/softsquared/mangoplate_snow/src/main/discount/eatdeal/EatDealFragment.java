@@ -15,11 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.softsquared.mangoplate_snow.R;
 import com.softsquared.mangoplate_snow.src.BaseFragment;
 import com.softsquared.mangoplate_snow.src.main.MainActivity;
+import com.softsquared.mangoplate_snow.src.main.discount.eatdeal.interfaces.EatDealFragmentView;
 import com.softsquared.mangoplate_snow.src.main.find_restaurant.interfaces.FindRestaurantFragmentView;
 
 import java.util.ArrayList;
 
-public class EatDealFragment extends BaseFragment implements FindRestaurantFragmentView {
+public class EatDealFragment extends BaseFragment implements EatDealFragmentView {
 
     private EatDealRecyclerAdapter mEatDealRecyclerAdapter;
     private RecyclerView mEatDealRecyclerView;

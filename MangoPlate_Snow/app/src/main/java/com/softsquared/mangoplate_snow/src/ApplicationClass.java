@@ -20,7 +20,7 @@ public class ApplicationClass extends Application {
     public static MediaType MEDIA_TYPE_JPEG = MediaType.parse("image/jpeg");
 
     //서버 주소
-    public static String BASE_URL = "http://apis.newvement.com/";
+    public static String BASE_URL = "http://product.eunjiha.site";
 
     public static SharedPreferences sSharedPreferences = null;
 
@@ -28,7 +28,7 @@ public class ApplicationClass extends Application {
     public static String TAG = "MangoPlate_APP";
 
     //JWT TOKEN 값
-    public static String X_ACCESS_TOKEN = "X-ACCESS-TOKEN";
+    public static String X_ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRlIjoiMjAyMC0wNS0wNSAxOTowNDo0OCIsImVtYWlsIjoidGVzdEBuYXZlci5jb20iLCJwdyI6InRlc3QxMjMifQ.nXRHwYUjloRplDrvlSycfYuVEr3bEMmArOlMb9fZY3Y";
 
     //날짜 형식
     public static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);

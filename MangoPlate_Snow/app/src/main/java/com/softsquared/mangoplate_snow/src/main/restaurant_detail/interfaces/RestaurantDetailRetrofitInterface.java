@@ -22,4 +22,5 @@ public interface RestaurantDetailRetrofitInterface {
 
     @POST("/test")
     Call<DefaultResponse> postTest(@Body RequestBody params);
+
 }

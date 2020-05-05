@@ -1,37 +1,109 @@
 package com.softsquared.mangoplate_snow.src.main.find_restaurant;
 
 public class Restaurant {
-    private String restaurantName;
-    private String districtAndDistance;
+//    private int areaId;
+//    private String area;
+//    private int restaurantId;
+//    private String restaurantImg;
+//    private String isCheckedWannago;
+//    private String restaurantTitle;
+//    private String distance;
+//    private String seeCounter;
+//    private int reviewCounter;
+//    private float restaurantScore;
+//    private String scoreColor;
+//
+//
+//    public Restaurant(String area, String restaurantImg, String isCheckedWannago, String restaurantTitle, String distance, String seeCounter, int reviewCounter, float restaurantScore, String scoreColor) {
+//        this.area = area;
+//        this.restaurantImg = restaurantImg;
+//        this.isCheckedWannago = isCheckedWannago;
+//        this.restaurantTitle = restaurantTitle;
+//        this.distance = distance;
+//        this.seeCounter = seeCounter;
+//        this.reviewCounter = reviewCounter;
+//        this.restaurantScore = restaurantScore;
+//        this.scoreColor = scoreColor;
+//    }
+    private int areaId;
+    private String area;
+    private int restaurantId;
+    private String restaurantImg;
+    private String isCheckedWannago;
+    private String restaurantTitle;
+    private String distance;
     private String seeCounter;
-    private String reviewCounter;
-    private String restaurantScore;
-    private boolean toggleWannago;
-    private int imgUrl;             //임시 이미지
+    private int reviewCounter;
+    private float restaurantScore;
+    private String scoreColor;
 
-    public Restaurant(String restaurantName, String districtAndDistance, String seeCounter, String reviewCounter, String restaurantScore, int imgUrl) {
-        this.restaurantName = restaurantName;
-        this.districtAndDistance = districtAndDistance;
+
+    public Restaurant(String area, String restaurantImg, String isCheckedWannago, String restaurantTitle, String distance, String seeCounter, int reviewCounter, double restaurantScore, String scoreColor) {
+        this.area = area;
+        this.restaurantImg = restaurantImg;
+        this.isCheckedWannago = isCheckedWannago;
+        this.restaurantTitle = restaurantTitle;
+        this.distance = distance;
         this.seeCounter = seeCounter;
         this.reviewCounter = reviewCounter;
-        this.restaurantScore = restaurantScore;
-        this.imgUrl = imgUrl;
+        this.restaurantScore = (float) restaurantScore;
+        this.scoreColor = scoreColor;
     }
 
-    public String getRestaurantName() {
-        return restaurantName;
+    public int getAreaId() {
+        return areaId;
     }
 
-    public void setRestaurantName(String restaurantName) {
-        this.restaurantName = restaurantName;
+    public void setAreaId(int areaId) {
+        this.areaId = areaId;
     }
 
-    public String getDistrictAndDistance() {
-        return districtAndDistance;
+    public String getArea() {
+        return area;
     }
 
-    public void setDistrictAndDistance(String districtAndDistance) {
-        this.districtAndDistance = districtAndDistance;
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public int getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
+    public String getRestaurantImg() {
+        return restaurantImg;
+    }
+
+    public void setRestaurantImg(String restaurantImg) {
+        this.restaurantImg = restaurantImg;
+    }
+
+    public String getIsCheckedWannago() {
+        return isCheckedWannago;
+    }
+
+    public void setIsCheckedWannago(String isCheckedWannago) {
+        this.isCheckedWannago = isCheckedWannago;
+    }
+
+    public String getRestaurantTitle() {
+        return restaurantTitle;
+    }
+
+    public void setRestaurantTitle(String restaurantTitle) {
+        this.restaurantTitle = restaurantTitle;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
     }
 
     public String getSeeCounter() {
@@ -42,34 +114,27 @@ public class Restaurant {
         this.seeCounter = seeCounter;
     }
 
-    public String getReviewCounter() {
+    public int getReviewCounter() {
         return reviewCounter;
     }
 
-    public void setReviewCounter(String reviewCounter) {
+    public void setReviewCounter(int reviewCounter) {
         this.reviewCounter = reviewCounter;
     }
 
-    public String getRestaurantScore() {
+    public float getRestaurantScore() {
         return restaurantScore;
     }
 
-    public void setRestaurantScore(String restaurantScore) {
+    public void setRestaurantScore(float restaurantScore) {
         this.restaurantScore = restaurantScore;
     }
-    public boolean isToggleWannago() {
-        return toggleWannago;
+
+    public String getScoreColor() {
+        return scoreColor;
     }
 
-    public void setToggleWannago(boolean toggleWannago) {
-        this.toggleWannago = toggleWannago;
-    }
-
-    public int getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(int imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setScoreColor(String scoreColor) {
+        this.scoreColor = scoreColor;
     }
 }

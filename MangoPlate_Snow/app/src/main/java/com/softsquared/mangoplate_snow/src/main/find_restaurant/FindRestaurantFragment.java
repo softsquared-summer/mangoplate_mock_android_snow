@@ -118,7 +118,7 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
                 startActivity(intent);
             }
         });
-        
+
         restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
                 "1215", 54, 3.8, "orange"));
         restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",

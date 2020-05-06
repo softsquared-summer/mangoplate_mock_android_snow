@@ -34,25 +34,26 @@ public class FindRestaurantService {
         this.mFindRestaurantFragmentView = findRestaurantFragmentView;
     }
 
-    public void tryGetRestaurantList() {
-        final FindRestaurantRetrofitInterface findRestaurantRetrofitInterface = getRetrofit().create(FindRestaurantRetrofitInterface.class);
-        findRestaurantRetrofitInterface.getRestaurantList(X_ACCESS_TOKEN, "main", "금천구, 구로구", (float) 37.477929, (float) 126.899720).enqueue(new Callback<FindRestaurantListResponse>() {
-            @Override
-            public void onResponse(Call<FindRestaurantListResponse> call, Response<FindRestaurantListResponse> response) {
-                final FindRestaurantListResponse findRestaurantListResponse = response.body();
-                if (findRestaurantListResponse == null) {
-                    mFindRestaurantFragmentView.validateFailure(null);
-                }else if(findRestaurantListResponse.getCode() == 200){
-                    mFindRestaurantFragmentView.getRestaurantListSuccess(findRestaurantListResponse.getRestaurantListResult());
-                }else if(findRestaurantListResponse.getCode() == 400) {
-                    mFindRestaurantFragmentView.getRestaurantListFailure(findRestaurantListResponse.getMessage());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<FindRestaurantListResponse> call, Throwable t) {
-                mFindRestaurantFragmentView.validateFailure(null);
-            }
-        });
-    }
+//    public void tryGetRestaurantList() {
+//        final FindRestaurantRetrofitInterface findRestaurantRetrofitInterface = getRetrofit().create(FindRestaurantRetrofitInterface.class);
+//        findRestaurantRetrofitInterface.getRestaurantList(X_ACCESS_TOKEN, "main", "금천구, 구로구", (float) 37.477929, 126.899720f).enqueue(new Callback<FindRestaurantListResponse>() {
+//            @Override
+//            public void onResponse(Call<FindRestaurantListResponse> call, Response<FindRestaurantListResponse> response) {
+//                final FindRestaurantListResponse findRestaurantListResponse = response.body();
+//                if (findRestaurantListResponse.getRestaurantListResult() != null) {
+//                    if(response.code()==200) {
+//                        Log.e("이름", ""+ findRestaurantListResponse.getRestaurantListResult().getTitle());
+//                        Log.e("조회수", ""+findRestaurantListResponse.getRestaurantListResult().getSeenNum());
+//                    }
+//                }
+//                Log.e("xxxxxxxx", findRestaurantListResponse.getMessage());
+//                mFindRestaurantFragmentView.getRestaurantListSuccess(findRestaurantListResponse.getRestaurantListResult());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<FindRestaurantListResponse> call, Throwable t) {
+//                mFindRestaurantFragmentView.validateFailure(null);
+//            }
+//        });
+//    }
 }

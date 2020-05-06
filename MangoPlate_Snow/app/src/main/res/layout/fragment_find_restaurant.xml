@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".src.main.find_restaurant.FindRestaurantFragment">
+    tools:context=".src.main.find_restaurant.FindRestaurantFragment"
+    android:background="#ffffff">
 
     <LinearLayout
         android:id="@+id/frag_find_restaurant_relative_top_bar"

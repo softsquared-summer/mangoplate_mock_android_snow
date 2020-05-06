@@ -23,12 +23,10 @@ import java.util.ArrayList;
 import retrofit2.http.Url;
 
 public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<RestaurantsRecyclerAdapter.RItemViewHolder> {
-    private ArrayList<Restaurant> RlistData;
-    private Context mContext;
+    private ArrayList<Restaurant> RlistData = new ArrayList<>();
 
-    public RestaurantsRecyclerAdapter(Context context, ArrayList<Restaurant> listData) {
+    public RestaurantsRecyclerAdapter(ArrayList<Restaurant> listData) {
         this.RlistData = listData;
-        this.mContext = context;
     }
 
     class RItemViewHolder extends RecyclerView.ViewHolder {
@@ -68,8 +66,24 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
 
         void onBind(Restaurant restaurant) {
 //            ivRestaurantMainImg.setImageResource(aa);
+            tvRestaurantName.setText(restaurant.getRestaurantTitle());
+            tvRestaurantArea.setText(restaurant.getArea());
+            tvRestaurantDistance.setText(restaurant.getDistance());
+            tvSeeCounter.setText(restaurant.getSeeCounter());
+            tvReviewCounter.setText(""+restaurant.getReviewCounter());
+            tvRestaurantScore.setText(""+restaurant.getRestaurantScore());
 
-/*
+            if(restaurant.getScoreColor().equals("orange")){
+                String orange = "#FF7101";
+                tvRestaurantScore.setTextColor(Color.parseColor(orange));
+                tvRestaurantScore.setVisibility(View.VISIBLE);
+            }else if(restaurant.getScoreColor().equals("gray")){
+                String gray = "#F0F0F0";
+                tvRestaurantScore.setTextColor(Color.parseColor(gray));
+                tvRestaurantScore.setVisibility(View.VISIBLE);
+            }else if(restaurant.getScoreColor().equals("null")){
+                tvRestaurantScore.setVisibility(View.INVISIBLE);
+            }
 
             if(restaurant.getIsCheckedWannago().equals("YES")){
                 togglebtnWannago.setChecked(true);
@@ -77,7 +91,6 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
                 togglebtnWannago.setChecked(false);
             }
             Glide.with(itemView.getContext()).load(restaurant.getRestaurantImg()).into(ivRestaurantImg);
-*/
 
         }
     }
@@ -91,26 +104,7 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
 
     @Override
     public void onBindViewHolder(@NonNull RItemViewHolder holder, int position) {
-        Restaurant restaurant = RlistData.get(position);
-        holder.tvRestaurantName.setText(restaurant.getTitle());
-        holder.tvRestaurantArea.setText(restaurant.getArea());
-        holder.tvRestaurantDistance.setText(restaurant.getDistance());
-        holder.tvSeeCounter.setText(restaurant.getSeenNum());
-        holder.tvReviewCounter.setText("" + restaurant.getReviewNum());
-        holder.tvRestaurantScore.setText(""+restaurant.getRating());
-
-        if(RlistData.get(position).getRatingColor().equals("orange")){
-            String orange = "#FF7101";
-            holder.tvRestaurantScore.setTextColor(Color.parseColor(orange));
-            holder.tvRestaurantScore.setVisibility(View.VISIBLE);
-        }else if(RlistData.get(position).getRatingColor().equals("gray")){
-            String gray = "#F0F0F0";
-            holder.tvRestaurantScore.setTextColor(Color.parseColor(gray));
-            holder.tvRestaurantScore.setVisibility(View.VISIBLE);
-        }else if(RlistData.get(position).getRatingColor().equals("null")){
-            holder.tvRestaurantScore.setVisibility(View.INVISIBLE);
-        }
-        Glide.with(mContext).load(restaurant.getImg()).into(holder.ivRestaurantImg);
+        holder.onBind(RlistData.get(position));
     }
 
     @Override

@@ -95,7 +95,12 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
         holder.tvRestaurantDistance.setText(restaurant.getDistance());
         holder.tvSeeCounter.setText(restaurant.getSeenNum());
         holder.tvReviewCounter.setText("" + restaurant.getReviewNum());
-        holder.tvRestaurantScore.setText(""+restaurant.getRating());
+
+        if(RlistData.get(position).getRating().equals("")){
+            holder.tvRestaurantScore.setVisibility(View.GONE);
+        }else {
+            holder.tvRestaurantScore.setText(restaurant.getRating());
+        }
         restaurantId = restaurant.getRestaurantId();
         Log.e("ddd", String.valueOf(restaurantId));
 
@@ -107,7 +112,7 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
             String gray = "#F0F0F0";
             holder.tvRestaurantScore.setTextColor(Color.parseColor(gray));
             holder.tvRestaurantScore.setVisibility(View.VISIBLE);
-        }else if(RlistData.get(position).getRatingColor().equals("null")){
+        }else if(RlistData.get(position).getRatingColor().equals("")){
             holder.tvRestaurantScore.setVisibility(View.INVISIBLE);
         }
 
@@ -116,7 +121,13 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
         }else if(RlistData.get(position).getStar().equals("NO")){
             holder.togglebtnWannago.setChecked(false);
         }
-        Glide.with(mContext).load(restaurant.getImg()).into(holder.ivRestaurantImg);
+
+        if(RlistData.get(position).getImg().equals("")){
+            Log.e("stop", "이미지가 null값");
+        }else{
+            Glide.with(mContext).load(restaurant.getImg()).into(holder.ivRestaurantImg);
+        }
+
     }
 
     @Override

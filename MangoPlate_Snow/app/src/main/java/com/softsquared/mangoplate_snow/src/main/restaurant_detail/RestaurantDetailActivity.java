@@ -138,11 +138,6 @@ public class RestaurantDetailActivity extends BaseActivity implements Restaurant
 
     }
 
-
-
-    public void getRestaurantListFailure(String message){
-        showCustomToast(message);
-    }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;

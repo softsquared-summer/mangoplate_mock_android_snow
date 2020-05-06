@@ -117,24 +117,6 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
             }
         });
 
-//        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
-//                "1215", 54, 3.8, "orange"));
-//        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
-//                "1215", 54, 3.8, "orange"));
-//        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
-//                "1215", 54, 3.8, "gray"));
-//        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
-//                "1215", 54, 3.8, "orange"));
-//        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
-//                "1215", 54, 3.8, "null"));
-//        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
-//                "1215", 54, 3.8, "orange"));
-
-
-//        restaurants.add(new Restaurant(restaurantListResult.getArea(), restaurantListResult.getImg(), restaurantListResult.getStar(), restaurantListResult.getTitle(), restaurantListResult.getDistance(),
-//                restaurantListResult.getSeenNum(), restaurantListResult.getReviewNum(), restaurantListResult.getRating(), restaurantListResult.getRatingColor()));
-
-
         return rootView;
     }
 

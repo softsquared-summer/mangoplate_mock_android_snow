@@ -1,28 +1,13 @@
 package com.softsquared.mangoplate_snow.src.main.find_restaurant;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import com.softsquared.mangoplate_snow.src.main.find_restaurant.interfaces.FindRestaurantFragmentView;
 import com.softsquared.mangoplate_snow.src.main.find_restaurant.interfaces.FindRestaurantRetrofitInterface;
-import com.softsquared.mangoplate_snow.src.main.find_restaurant.models.FindRestaurantListParams;
 import com.softsquared.mangoplate_snow.src.main.find_restaurant.models.FindRestaurantListResponse;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.List;
-
-import okhttp3.HttpUrl;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.softsquared.mangoplate_snow.src.ApplicationClass.BASE_URL;
-import static com.softsquared.mangoplate_snow.src.ApplicationClass.MEDIA_TYPE_JSON;
 import static com.softsquared.mangoplate_snow.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.softsquared.mangoplate_snow.src.ApplicationClass.getRetrofit;
 

@@ -1,39 +1,71 @@
 package com.softsquared.mangoplate_snow.src.main.restaurant_detail;
 
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+
+import androidx.annotation.Nullable;
+
+import com.softsquared.mangoplate_snow.src.main.find_restaurant.models.FindRestaurantListResponse;
 import com.softsquared.mangoplate_snow.src.main.interfaces.MainActivityView;
 import com.softsquared.mangoplate_snow.src.main.interfaces.MainRetrofitInterface;
 import com.softsquared.mangoplate_snow.src.main.models.DefaultResponse;
 import com.softsquared.mangoplate_snow.src.main.restaurant_detail.interfaces.RestaurantDetailActivityView;
+import com.softsquared.mangoplate_snow.src.main.restaurant_detail.interfaces.RestaurantDetailRetrofitInterface;
+import com.softsquared.mangoplate_snow.src.main.restaurant_detail.models.RestaurantDetailResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.softsquared.mangoplate_snow.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.softsquared.mangoplate_snow.src.ApplicationClass.getRetrofit;
 
-class RestaurantDetailService {
+class RestaurantDetailService extends Service {
     private  final RestaurantDetailActivityView mRestaurantDetailActivityView;
+    private int restaurantId;
 
     RestaurantDetailService(final RestaurantDetailActivityView restaurantDetailActivityView) {
         this.mRestaurantDetailActivityView = restaurantDetailActivityView;
     }
-//    void getTest(){
-//        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
-//        mainRetrofitInterface.getTest().enqueue(new Callback<DefaultResponse>() {
-//            @Override
-//            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
-//                final DefaultResponse defaultResponse = response.body();
-//                if(defaultResponse == null){
-//                    mMainActivityView.validateFailure(null);
-//                    return;
-//                }
-//                mMainActivityView.validateSuccess(defaultResponse.getMessage());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<DefaultResponse> call, Throwable t) {
-//                mMainActivityView.validateFailure(null);
-//            }
-//        });
-//    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if(intent == null){
+            return Service.START_STICKY;        //서비스가 종료될 경우 자동으로 다시 실행
+        }else{
+            restaurantId = intent.getExtras().getInt("restaurantId");
+        }
+
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    void tryGetRestaurantDetailInfo(){
+        final RestaurantDetailRetrofitInterface restaurantDetailRetrofitInterface = getRetrofit().create(RestaurantDetailRetrofitInterface.class);
+        restaurantDetailRetrofitInterface.getRestaurantDetailInfo(X_ACCESS_TOKEN, restaurantId).enqueue(new Callback<RestaurantDetailResponse>() {
+            @Override
+            public void onResponse(Call<RestaurantDetailResponse> call, Response<RestaurantDetailResponse> response) {
+                final RestaurantDetailResponse restaurantDetailResponse = response.body();
+                if (restaurantDetailResponse == null) {
+                    mRestaurantDetailActivityView.validateFailure(null);
+                }else if(restaurantDetailResponse.getCode() == 200){
+                    mRestaurantDetailActivityView.getRestaurantDetailInfoSuccess(restaurantDetailResponse.getResult());
+                }else if(restaurantDetailResponse.getCode() == 400) {
+                    mRestaurantDetailActivityView.getRestaurantDetailInfoFailure(restaurantDetailResponse.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RestaurantDetailResponse> call, Throwable t) {
+                mRestaurantDetailActivityView.validateFailure(null);
+            }
+        });
+    }
+
 }

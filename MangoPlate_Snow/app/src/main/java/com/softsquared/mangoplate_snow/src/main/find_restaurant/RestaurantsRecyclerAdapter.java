@@ -3,6 +3,7 @@ package com.softsquared.mangoplate_snow.src.main.find_restaurant;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import retrofit2.http.Url;
 public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<RestaurantsRecyclerAdapter.RItemViewHolder> {
     private ArrayList<Restaurant> RlistData;
     private Context mContext;
+    private int restaurantId;
 
     public RestaurantsRecyclerAdapter(Context context, ArrayList<Restaurant> listData) {
         this.RlistData = listData;
@@ -56,11 +58,7 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, RestaurantDetailActivity.class);
-                    intent.putExtra("restaurant_name", tvRestaurantName.getText().toString());
-                    intent.putExtra("see_counter", tvSeeCounter.getText().toString());
-                    intent.putExtra("review_counter", tvReviewCounter.getText().toString());
-                    intent.putExtra("restaurant_score", tvRestaurantScore.getText().toString());
-                    intent.putExtra("is_wannago", togglebtnWannago.isChecked());
+                    intent.putExtra("restaurantId", restaurantId);
                     context.startActivity(intent);
                 }
             });
@@ -98,6 +96,8 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
         holder.tvSeeCounter.setText(restaurant.getSeenNum());
         holder.tvReviewCounter.setText("" + restaurant.getReviewNum());
         holder.tvRestaurantScore.setText(""+restaurant.getRating());
+        restaurantId = restaurant.getRestaurantId();
+        Log.e("ddd", String.valueOf(restaurantId));
 
         if(RlistData.get(position).getRatingColor().equals("orange")){
             String orange = "#FF7101";
@@ -109,6 +109,12 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
             holder.tvRestaurantScore.setVisibility(View.VISIBLE);
         }else if(RlistData.get(position).getRatingColor().equals("null")){
             holder.tvRestaurantScore.setVisibility(View.INVISIBLE);
+        }
+
+        if(RlistData.get(position).getStar().equals("YES")){
+            holder.togglebtnWannago.setChecked(true);
+        }else if(RlistData.get(position).getStar().equals("NO")){
+            holder.togglebtnWannago.setChecked(false);
         }
         Glide.with(mContext).load(restaurant.getImg()).into(holder.ivRestaurantImg);
     }

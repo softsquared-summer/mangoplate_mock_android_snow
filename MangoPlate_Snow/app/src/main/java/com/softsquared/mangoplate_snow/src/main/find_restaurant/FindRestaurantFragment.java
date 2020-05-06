@@ -16,13 +16,11 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.bumptech.glide.Glide;
 import com.softsquared.mangoplate_snow.R;
 import com.softsquared.mangoplate_snow.src.BaseFragment;
 import com.softsquared.mangoplate_snow.src.login.LoginActivity;
 import com.softsquared.mangoplate_snow.src.main.MainActivity;
 import com.softsquared.mangoplate_snow.src.main.find_restaurant.interfaces.FindRestaurantFragmentView;
-import com.softsquared.mangoplate_snow.src.main.find_restaurant.models.FindRestaurantListResponse;
 
 import java.util.ArrayList;
 import java.util.Timer;

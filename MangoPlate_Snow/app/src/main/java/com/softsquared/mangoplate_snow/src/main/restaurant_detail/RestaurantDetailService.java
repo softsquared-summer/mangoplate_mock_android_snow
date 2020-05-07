@@ -24,9 +24,9 @@ import static com.softsquared.mangoplate_snow.src.ApplicationClass.getRetrofit;
 
 class RestaurantDetailService {
     private  final RestaurantDetailActivityView mRestaurantDetailActivityView;
-    RestaurantDetailActivity restaurantDetailActivity;
-    private int restaurantId= 0;
-
+    private String naver_short_url = "https://naveropenapi.apigw.ntruss.com/util/v1/shorturl";
+    private String naver_client_id = "X-NCP-APIGW-API-KEY-ID";
+    private String naver_client_secret_key = "X-NCP-APIGW-API-KEY";
     RestaurantDetailService(final RestaurantDetailActivityView restaurantDetailActivityView) {
         this.mRestaurantDetailActivityView = restaurantDetailActivityView;
     }

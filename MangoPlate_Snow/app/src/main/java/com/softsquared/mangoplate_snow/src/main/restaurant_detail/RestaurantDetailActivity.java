@@ -14,13 +14,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
 
+import com.naver.maps.map.MapFragment;
+import com.naver.maps.map.NaverMap;
+import com.naver.maps.map.OnMapReadyCallback;
 import com.softsquared.mangoplate_snow.R;
 import com.softsquared.mangoplate_snow.src.BaseActivity;
 import com.softsquared.mangoplate_snow.src.main.restaurant_detail.interfaces.RestaurantDetailActivityView;
 
-public class RestaurantDetailActivity extends BaseActivity implements RestaurantDetailActivityView{
+public class RestaurantDetailActivity extends BaseActivity implements RestaurantDetailActivityView, OnMapReadyCallback {
 
     private TextView mRestaurantDetailName, mRestaurantDetailSeeCounter, mRestaurantDetailWannagoCounter, mRestaurantDetailReviewCounter,
                    mRestaurantDetailScore, mRestaurantDetailAddress, mRestaurantDetailOldAddress,
@@ -40,6 +45,14 @@ public class RestaurantDetailActivity extends BaseActivity implements Restaurant
         setContentView(R.layout.activity_restaurant_detail);
 
         restaurantDetailService = new RestaurantDetailService(this);
+
+        FragmentManager fm = getSupportFragmentManager();
+        MapFragment mapFragment = (MapFragment)fm.findFragmentById(R.id.restaurant_detail_map);
+        if(mapFragment==null){
+            mapFragment = MapFragment.newInstance();
+            fm.beginTransaction().add(R.id.restaurant_detail_map, mapFragment).commit();
+        }
+        mapFragment.getMapAsync(this);
 
         mRestaurantDetailName = findViewById(R.id.restaurant_detail_name);
         mRestaurantDetailSeeCounter = findViewById(R.id.restaurant_detail_see_counter);
@@ -214,4 +227,8 @@ public class RestaurantDetailActivity extends BaseActivity implements Restaurant
         return restaurantId;
     }
 
+    @Override
+    public void onMapReady(@NonNull NaverMap naverMap) {
+
+    }
 }

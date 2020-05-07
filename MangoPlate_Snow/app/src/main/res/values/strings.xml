@@ -2,6 +2,8 @@
     <string name="app_name">MangoPlate_Snow</string>
     <string name="loading">로딩중입니다.</string>
     <string name="nework_error">네트워크 연결이 원활하지 않습니다.</string>
+    <string name="naver_client_id">ddef9kpq3q</string>
+    <string name="naver_secret_key">i1TtmtVXWKrMmYfDzykrlsBcdyPXDpqtQGcKCjTE</string>
 
     <string name="district_now">지금 보고있는 지역은</string>
     <string name="like">좋아요</string>

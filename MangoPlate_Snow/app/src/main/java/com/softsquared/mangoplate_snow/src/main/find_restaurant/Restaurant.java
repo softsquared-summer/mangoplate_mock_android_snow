@@ -34,10 +34,10 @@ public class Restaurant {
     private String seenNum;
 
     @SerializedName("reviewNum")
-    private int reviewNum;
+    private String reviewNum;
 
     @SerializedName("rating")
-    private float rating;
+    private String rating;
 
     @SerializedName("ratingColor")
     private String ratingColor;
@@ -82,11 +82,11 @@ public class Restaurant {
         return seenNum;
     }
 
-    public int getReviewNum() {
+    public String getReviewNum() {
         return reviewNum;
     }
 
-    public float getRating() {
+    public String getRating() {
         return rating;
     }
 

@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -28,9 +30,12 @@ import com.softsquared.mangoplate_snow.src.main.restaurant_detail.interfaces.Res
 public class RestaurantDetailActivity extends BaseActivity implements RestaurantDetailActivityView, OnMapReadyCallback {
 
     private TextView mRestaurantDetailName, mRestaurantDetailSeeCounter, mRestaurantDetailWannagoCounter, mRestaurantDetailReviewCounter,
-                   mRestaurantDetailScore, mRestaurantDetailAddress, mRestaurantDetailOldAddress;
-    private LinearLayout mRestaurantDetailBtnWannago, mRestaurantDetailBtnVisited, mRestaurantDetailBtnWriteReview, mRestaurantDetailBtnMylist;
-    private RelativeLayout mRestaurantDetailScoreAndHelp;
+                   mRestaurantDetailScore, mRestaurantDetailAddress, mRestaurantDetailOldAddress,
+                    mRestaurantDetailInfoUpdate, mRestaurantDetailInfoTime, mRestaurantDetailInfoHoliday, mRestaurantDetailInfoPrice, mRestaurantDetailTvDescription,
+                    mRestaurantDetailMenuUpdate, mGapOnMenu;
+    private LinearLayout mRestaurantDetailBtnWannago, mRestaurantDetailBtnVisited, mRestaurantDetailBtnWriteReview, mRestaurantDetailBtnMylist,
+                    mRestaurantDetailLinearTime, mRestaurantDetailLinearHoliday, mRestaurantDetailLinearMenu, mRestaurantDetailLinearChips, mRestaurantDetailLinearKeywords;
+    private RelativeLayout mRestaurantDetailScoreAndHelp, mRestaurantDetailRelativeDescription;
     private ToggleButton mRestaurantDetailToggleWannago;
     private GoogleMap mGoogleMap;
     public int restaurantId;
@@ -51,12 +56,28 @@ public class RestaurantDetailActivity extends BaseActivity implements Restaurant
         mRestaurantDetailScore = findViewById(R.id.restaurant_detail_score);
         mRestaurantDetailAddress = findViewById(R.id.restaurant_detail_address);
         mRestaurantDetailOldAddress = findViewById(R.id.restaurant_detail_old_address);
+        mRestaurantDetailInfoUpdate = findViewById(R.id.restaurant_detail_info_update);
+        mRestaurantDetailInfoTime = findViewById(R.id.restaurant_detail_time);
+        mRestaurantDetailInfoHoliday = findViewById(R.id.restaurant_detail_holiday);
+        mRestaurantDetailInfoPrice = findViewById(R.id.restaurant_detail_price);
+        mRestaurantDetailTvDescription = findViewById(R.id.restaurant_detail_tv_description);
+        mRestaurantDetailMenuUpdate = findViewById(R.id.restaurant_detail_menu_update);
+        mGapOnMenu = findViewById(R.id.gap_on_menu);
+
         mRestaurantDetailBtnWannago = findViewById(R.id.restaurant_detail_btn_wannago);
         mRestaurantDetailBtnVisited = findViewById(R.id.restaurant_detail_btn_visited);
         mRestaurantDetailBtnWriteReview = findViewById(R.id.restaurant_detail_btn_write_review);
         mRestaurantDetailBtnMylist = findViewById(R.id.restaurant_detail_btn_mylist);
+        mRestaurantDetailLinearTime = findViewById(R.id.restaurant_detail_linear_time);
+        mRestaurantDetailLinearHoliday = findViewById(R.id.restaurant_detail_linear_holiday);
+        mRestaurantDetailLinearMenu = findViewById(R.id.restaurant_detail_linear_menu);
+        mRestaurantDetailLinearChips = findViewById(R.id.restaurant_detail_linear_chips);
+        mRestaurantDetailLinearKeywords = findViewById(R.id.restaurant_detail_linear_keywords);
+
         mRestaurantDetailToggleWannago= findViewById(R.id.restaurant_detail_toggle_wannago);
+
         mRestaurantDetailScoreAndHelp = findViewById(R.id.restaurant_detail_score_and_help);
+        mRestaurantDetailRelativeDescription = findViewById(R.id.restaurant_detail_relative_description);
 
         Intent intent = getIntent();
         restaurantId = intent.getExtras().getInt("restaurantId");
@@ -110,6 +131,8 @@ public class RestaurantDetailActivity extends BaseActivity implements Restaurant
         mRestaurantDetailReviewCounter.setText(restaurantDetail.getReviewNum());
         mRestaurantDetailAddress.setText(restaurantDetail.getAddress());
         mRestaurantDetailOldAddress.setText(restaurantDetail.getOldAddress());
+        mRestaurantDetailInfoUpdate.setText(restaurantDetail.getInfoUpdate());
+        mRestaurantDetailInfoPrice.setText(restaurantDetail.getInfoPrice());
 
         if(restaurantDetail.getRating().equals("")){
             mRestaurantDetailScoreAndHelp.setVisibility(View.GONE);
@@ -131,6 +154,61 @@ public class RestaurantDetailActivity extends BaseActivity implements Restaurant
             mRestaurantDetailToggleWannago.setChecked(true);
         }else if(restaurantDetail.getUserStar().equals("NO")){
             mRestaurantDetailToggleWannago.setChecked(false);
+        }
+
+        if(restaurantDetail.getInfoTime().equals("")){
+            mRestaurantDetailLinearTime.setVisibility(View.GONE);
+        }else{
+            mRestaurantDetailInfoTime.setText(restaurantDetail.getInfoTime());
+        }
+
+        if(restaurantDetail.getInfoHoliday().equals("")){
+            mRestaurantDetailLinearHoliday.setVisibility(View.GONE);
+        }else{
+            mRestaurantDetailInfoHoliday.setText(restaurantDetail.getInfoHoliday());
+        }
+
+        if(restaurantDetail.getInfoDescription().equals("")){
+            mRestaurantDetailRelativeDescription.setVisibility(View.GONE);
+        }else{
+            mRestaurantDetailTvDescription.setText(restaurantDetail.getInfoDescription());
+        }
+
+        if(restaurantDetail.getMenuUpdate().equals("")){
+            mRestaurantDetailLinearMenu.setVisibility(View.GONE);
+            mGapOnMenu.setVisibility(View.GONE);
+        }else{
+            //메뉴가 있는 데이터가 거의 없기 때문에 따로 지정하지 않음
+        }
+
+        if(restaurantDetail.getKeywords().equals("")){
+            mRestaurantDetailLinearKeywords.setVisibility(View.GONE);
+        }else{
+            LinearLayout.LayoutParams paramsForChips = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams paramsForLayout = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            LinearLayout linearChip1 = new LinearLayout(this);
+            linearChip1.setLayoutParams(paramsForLayout);
+            LinearLayout linearChip2 = new LinearLayout(this);
+            linearChip2.setLayoutParams(paramsForLayout);
+            mRestaurantDetailLinearChips.addView(linearChip1);
+            mRestaurantDetailLinearChips.addView(linearChip2);
+            paramsForChips.setMarginStart(20);
+            paramsForLayout.setMargins(0,0,0,40);
+            for(int i=0; i<restaurantDetail.getKeywords().size(); i++){
+                TextView chip = new TextView(this);
+                chip.setText(restaurantDetail.getKeywords().get(i).getKeyword());
+                chip.setTextSize(13);
+                chip.setBackground(getDrawable(R.drawable.button_round_border_black));
+                chip.setPadding(40,20,40,20);
+                if((i!=0) || (i!=2)) {
+                    chip.setLayoutParams(paramsForChips);
+                }
+                if(i>1){
+                    linearChip2.addView(chip);
+                }else {
+                    linearChip1.addView(chip);
+                }
+            }
         }
 
     }

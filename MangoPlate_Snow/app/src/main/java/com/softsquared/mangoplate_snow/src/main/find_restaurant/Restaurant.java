@@ -12,6 +12,12 @@ public class Restaurant {
     @SerializedName("restaurantId")
     private int restaurantId;
 
+    @SerializedName("lat")
+    private float lat;
+
+    @SerializedName("lng")
+    private float lng;
+
     @SerializedName("img")
     private String img;
 
@@ -46,6 +52,14 @@ public class Restaurant {
 
     public int getRestaurantId() {
         return restaurantId;
+    }
+
+    public float getLat() {
+        return lat;
+    }
+
+    public float getLng() {
+        return lng;
     }
 
     public String getImg() {

@@ -144,6 +144,7 @@
                 </LinearLayout>
 
                 <RelativeLayout
+                    android:id="@+id/restaurant_detail_score_and_help"
                     android:layout_width="70dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="15dp">
@@ -194,13 +195,14 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/restaurant_detail_wannago_iv"
+                    <ToggleButton
+                        android:id="@+id/restaurant_detail_toggle_wannago"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:layout_gravity="center_horizontal"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_wanna_go_orange" />
+                        android:textOn=""
+                        android:textOff=""
+                        android:background="@drawable/toggle_wannago_selector_restaurant_detail" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -305,7 +307,33 @@
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp">
+                    android:layout_height="80dp"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="15dp">
+                    <TextView
+                        android:id="@+id/restaurant_detail_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_old_address"
+                            android:scaleType="fitCenter"
+                            android:layout_gravity="center_vertical"/>
+                        <TextView
+                            android:id="@+id/restaurant_detail_old_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="3dp"
+                            android:textSize="13dp"/>
+                    </LinearLayout>
+
 
                 </LinearLayout>
                 <fragment

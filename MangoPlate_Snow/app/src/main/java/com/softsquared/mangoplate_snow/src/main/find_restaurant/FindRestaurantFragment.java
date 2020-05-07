@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -90,6 +91,7 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
         }, DELAY, PERIOD);
 
         tryGetRestaurantList();
+
         mRestaurantsRecyclerAdapter.notifyDataSetChanged();
         FindRestaurantRecyclerViewDecoration space = new FindRestaurantRecyclerViewDecoration(20);
         mRestaurantRecyclerView.addItemDecoration(space);
@@ -117,24 +119,6 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
             }
         });
 
-//        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
-//                "1215", 54, 3.8, "orange"));
-//        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
-//                "1215", 54, 3.8, "orange"));
-//        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
-//                "1215", 54, 3.8, "gray"));
-//        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
-//                "1215", 54, 3.8, "orange"));
-//        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
-//                "1215", 54, 3.8, "null"));
-//        restaurants.add(new Restaurant("화성시", "https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627https://t1.daumcdn.net/cfile/tistory/9979CA3359EEB37627", "YES", "세야스시", "1235.2m",
-//                "1215", 54, 3.8, "orange"));
-
-
-//        restaurants.add(new Restaurant(restaurantListResult.getArea(), restaurantListResult.getImg(), restaurantListResult.getStar(), restaurantListResult.getTitle(), restaurantListResult.getDistance(),
-//                restaurantListResult.getSeenNum(), restaurantListResult.getReviewNum(), restaurantListResult.getRating(), restaurantListResult.getRatingColor()));
-
-
         return rootView;
     }
 
@@ -157,6 +141,8 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
     @Override
     public void getRestaurantListSuccess(ArrayList<Restaurant> restaurantListResult) {
         hideProgressDialog();
+
+        Toast.makeText(mContext, ""+restaurantListResult.size(), Toast.LENGTH_SHORT).show();
 
 //        Log.e("ddd", restaurantListResult.getArea() + "\n"+ restaurantListResult.getImg() + "\n"+ restaurantListResult.getStar() + "\n"+ restaurantListResult.getTitle() + "\n"+ restaurantListResult.getDistance() + "\n"+
 //                restaurantListResult.getSeenNum() + "\n"+ restaurantListResult.getReviewNum() + "\n"+ restaurantListResult.getRating() + "\n"+ restaurantListResult.getRatingColor());

@@ -1,6 +1,9 @@
 package com.softsquared.mangoplate_snow.src.main.discount.eatdeal.models;
 
 import com.google.gson.annotations.SerializedName;
+import com.softsquared.mangoplate_snow.src.main.discount.eatdeal.EatDeal;
+
+import java.util.ArrayList;
 
 public class EatDealResponse {
     @SerializedName("code")
@@ -12,6 +15,9 @@ public class EatDealResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
+    @SerializedName("result")
+    private ArrayList<EatDeal> eatDealListResult;
+
     public int getCode(){
         return code;
     }
@@ -20,5 +26,8 @@ public class EatDealResponse {
     }
     public boolean getIsSuccess(){
         return isSuccess;
+    }
+    public ArrayList<EatDeal> getEatDealListResult() {
+        return eatDealListResult;
     }
 }

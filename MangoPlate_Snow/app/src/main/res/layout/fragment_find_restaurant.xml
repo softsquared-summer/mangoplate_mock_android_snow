@@ -74,6 +74,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="5dp"/>
     </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -130,7 +131,7 @@
                     android:drawableRight="@drawable/ic_next_to_district"
                     android:layout_alignParentStart="true"
                     android:stateListAnimator="@null"/>
-                <Button
+                <LinearLayout
                     android:id="@+id/frag_find_restaurant_btn_distance_from_now"
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
@@ -138,14 +139,33 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_toLeftOf="@id/frag_find_restaurant_ib_filter"/>
-                <Button
+                    android:layout_toLeftOf="@id/frag_find_restaurant_ib_filter"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_locator"
+                        android:layout_marginStart="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3km"
+                        android:textSize="11dp"
+                        android:textColor="@color/colorMainTheme"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"/>
+
+
+                </LinearLayout>
+                <ImageView
                     android:id="@+id/frag_find_restaurant_ib_filter"
-                    android:layout_width="50dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_border_light_gray"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/ic_filter"
+                    android:scaleType="fitCenter"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="9dp"
                     android:layout_marginEnd="15dp"
                     android:layout_alignParentEnd="true"/>
 
@@ -181,4 +201,13 @@
 <!--            </LinearLayout>-->
         </RelativeLayout>
     </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#000000"
+        android:src="@drawable/ttttt"
+        app:elevation="10dp"/>
 </LinearLayout>

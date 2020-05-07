@@ -18,13 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:targetApi="n">
+        tools:targetApi="n"
+        tools:replace="android:allowBackup">
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCeyxSfn0HLGmc2MyM29mMJcLu7IZS97us"/>
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="ddef9kpq3q"/>
         <activity android:name="com.softsquared.mangoplate_snow.src.main.MainActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

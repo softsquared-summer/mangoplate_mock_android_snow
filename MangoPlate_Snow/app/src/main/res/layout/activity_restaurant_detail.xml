@@ -26,12 +26,14 @@
                     android:layout_height="match_parent">
 
                     <ImageView
+                        android:id="@+id/restaurant_detail_iv_1"
                         android:layout_width="145dp"
                         android:layout_height="145dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/test1" />
 
                     <ImageView
+                        android:id="@+id/restaurant_detail_iv_2"
                         android:layout_width="145dp"
                         android:layout_height="145dp"
                         android:layout_marginStart="5dp"
@@ -39,6 +41,7 @@
                         android:src="@drawable/test1_1" />
 
                     <ImageView
+                        android:id="@+id/restaurant_detail_iv_3"
                         android:layout_width="145dp"
                         android:layout_height="145dp"
                         android:layout_marginStart="5dp"
@@ -46,18 +49,32 @@
                         android:src="@drawable/test1_2" />
 
                     <ImageView
+                        android:id="@+id/restaurant_detail_iv_4"
                         android:layout_width="145dp"
                         android:layout_height="145dp"
                         android:layout_marginStart="5dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/test1_3" />
 
-                    <ImageView
+                    <FrameLayout
                         android:layout_width="145dp"
                         android:layout_height="145dp"
-                        android:layout_marginStart="5dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/test1_4" />
+                        android:layout_marginStart="5dp">
+
+                        <ImageView
+                            android:id="@+id/restaurant_detail_iv_5"
+                            android:layout_width="145dp"
+                            android:layout_height="145dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/test1_4" />
+                        <TextView
+                            android:layout_width="145dp"
+                            android:layout_height="145dp"
+                            android:background="#B3000000"
+                            android:text="전체 사진 보기"
+                            android:gravity="center"
+                            android:textColor="#FAFAFA"/>
+                    </FrameLayout>
                 </LinearLayout>
             </HorizontalScrollView>
 
@@ -342,9 +359,8 @@
 
                 </LinearLayout>
 
-                <fragment
+                <ImageView
                     android:id="@+id/restaurant_detail_map"
-                    android:name="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -729,18 +745,19 @@
                             android:textColor="@color/colorLighterThanNotSelected"
                             android:textSize="12dp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
                         android:layout_marginStart="5dp"
+                        android:layout_weight="1"
                         android:gravity="center_vertical">
 
                         <TextView
                             android:id="@+id/menu_name_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="14dp"/>
+                            android:textSize="14dp" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -753,18 +770,19 @@
                             android:layout_height="wrap_content"
                             android:textSize="14dp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
                         android:layout_marginStart="5dp"
+                        android:layout_weight="1"
                         android:gravity="center_vertical">
 
                         <TextView
                             android:id="@+id/menu_name_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="14dp"/>
+                            android:textSize="14dp" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -778,6 +796,7 @@
                             android:textSize="14dp" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/restaurant_detail_linear_"
                     android:layout_width="match_parent"
@@ -804,55 +823,64 @@
                         android:src="@drawable/ic_arrow_right_gray" />
                 </LinearLayout>
             </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="@color/colorLighterThanNotSelected" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="25dp"
                 android:gravity="center_vertical">
+
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/ic_info_icon"/>
+                    android:src="@drawable/ic_info_icon" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginStart="10dp"
-                    android:text="잘못 되었거나 폐점된 정보를 알려주세요."/>
+                    android:layout_weight="1"
+                    android:text="잘못 되었거나 폐점된 정보를 알려주세요." />
+
                 <ImageView
                     android:layout_width="13dp"
                     android:layout_height="15dp"
-                    android:src="@drawable/ic_arrow_right_gray"/>
+                    android:src="@drawable/ic_arrow_right_gray" />
 
             </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="@color/colorLighterThanNotSelected" />
+
             <LinearLayout
                 android:id="@+id/restaurant_detail_linear_keywords"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:orientation="vertical"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="이 식당의 인기 키워드"
-                    android:textStyle="bold"
-                    android:textColor="#000000"/>
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
                 <LinearLayout
                     android:id="@+id/restaurant_detail_linear_chips"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:orientation="vertical"/>
+                    android:orientation="vertical" />
 
             </LinearLayout>
 

@@ -16,18 +16,11 @@ import android.widget.ToggleButton;
 
 import androidx.annotation.Nullable;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.softsquared.mangoplate_snow.R;
 import com.softsquared.mangoplate_snow.src.BaseActivity;
 import com.softsquared.mangoplate_snow.src.main.restaurant_detail.interfaces.RestaurantDetailActivityView;
 
-public class RestaurantDetailActivity extends BaseActivity implements RestaurantDetailActivityView, OnMapReadyCallback {
+public class RestaurantDetailActivity extends BaseActivity implements RestaurantDetailActivityView{
 
     private TextView mRestaurantDetailName, mRestaurantDetailSeeCounter, mRestaurantDetailWannagoCounter, mRestaurantDetailReviewCounter,
                    mRestaurantDetailScore, mRestaurantDetailAddress, mRestaurantDetailOldAddress,
@@ -37,7 +30,6 @@ public class RestaurantDetailActivity extends BaseActivity implements Restaurant
                     mRestaurantDetailLinearTime, mRestaurantDetailLinearHoliday, mRestaurantDetailLinearMenu, mRestaurantDetailLinearChips, mRestaurantDetailLinearKeywords;
     private RelativeLayout mRestaurantDetailScoreAndHelp, mRestaurantDetailRelativeDescription;
     private ToggleButton mRestaurantDetailToggleWannago;
-    private GoogleMap mGoogleMap;
     public int restaurantId;
     private RestaurantDetailService restaurantDetailService;
     private float restaurantLat, restaurantLng =0;
@@ -222,23 +214,4 @@ public class RestaurantDetailActivity extends BaseActivity implements Restaurant
         return restaurantId;
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-//        mGoogleMap = googleMap;
-//        LatLng coordinate = null;
-//        MarkerOptions marker;
-
-//        if(mRestaurantDetailName.getText().equals("세야스시")) {
-//            coordinate = new LatLng(127.072371, 37.2028944);
-//        }
-//        marker = new MarkerOptions();
-//        marker.position(coordinate);
-//        marker.alpha(0.8f);
-//        marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-//        mGoogleMap.addMarker(marker);
-//        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(coordinate));
-//        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(10));
-
-//https://medium.com/@logishudson0218/%EC%A7%80%EB%8F%84-api-01-72510b25e4bd
-    }
 }

@@ -24,9 +24,7 @@ public interface FindRestaurantRetrofitInterface {
     Call<FindRestaurantListResponse> getRestaurantList(
             @Query("type") String type,
             @Query("lat") float lat,
-            @Query("lng") float lng,
-            @Query("category") String category,
-            @Query("kind") String kind
+            @Query("lng") float lng
     );
 }
 //일단 한거 완료짓기 완벽하게, 맛집찾기 탭 지도, 가게 상세페이지

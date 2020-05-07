@@ -1,51 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
+
     <RelativeLayout
         android:id="@+id/eatdeal_relative_location_refresh"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <Button
+        android:orientation="horizontal">
+
+        <LinearLayout
             android:id="@+id/eatdeal_btn_around_me"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="20dp"
-            android:text="위치" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
+            android:layout_width="75dp"
+            android:layout_height="30dp"
+            android:background="@drawable/button_round_border_orange"
+            android:layout_marginStart="15dp"
+            android:layout_centerVertical="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="금천구"
+                android:textSize="13dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                android:textColor="@color/colorMainTheme"/>
+
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/ic_down_arrow_orange"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="20dp"
-            android:text="새로고침"/>
+            android:src="@drawable/ic_refresh"
+            android:scaleType="fitCenter"
+            android:padding="5dp"
+            android:background="@drawable/button_circle"/>
     </RelativeLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/eatdeal_recycler_restaurant_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eatdeal_relative_location_refresh"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:gravity="center_horizontal">
-        <Button
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:text="모든 EAT딜 보기"
-            android:background="#ffffff"
-            android:textColor="@color/colorMainTheme"/>
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/eatdeal_recycler_restaurant_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:layout_below="@id/eatdeal_recycler_restaurant_list">
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:text="모든 EAT딜 보기"
+                android:textColor="@color/colorMainTheme" />
+        </LinearLayout>
     </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout><!--    android:background="?attr/selectableItemBackground"-->

@@ -97,7 +97,6 @@ public class RestaurantsRecyclerAdapter extends RecyclerView.Adapter<Restaurants
         holder.tvReviewCounter.setText("" + restaurant.getReviewNum());
         holder.tvRestaurantScore.setText(""+restaurant.getRating());
         restaurantId = restaurant.getRestaurantId();
-        Log.e("ddd", String.valueOf(restaurantId));
 
         if(RlistData.get(position).getRatingColor().equals("orange")){
             String orange = "#FF7101";

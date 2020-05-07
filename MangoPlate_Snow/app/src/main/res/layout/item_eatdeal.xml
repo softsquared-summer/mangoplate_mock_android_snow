@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <FrameLayout
-            android:id="@+id/eatdeal_frame_food_img"
             android:layout_width="match_parent"
-            android:layout_height="203dp"
-            android:background="#000000">
+            android:layout_height="203dp">
+
+            <ImageView
+                android:id="@+id/eatdeal_iv_food_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test3" />
 
             <TextView
                 android:id="@+id/eatdeal_tv_discount_percent"
@@ -23,10 +29,11 @@
                 android:background="#FF8899"
                 android:gravity="center"
                 android:text="할인율"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:visibility="gone"/>
 
             <TextView
-                android:id="@+id/eatdeal_tv_notice_new"
+                android:id="@+id/eatdeal_tv_notice"
                 android:layout_width="60dp"
                 android:layout_height="30dp"
                 android:layout_gravity="bottom"
@@ -35,42 +42,66 @@
                 android:gravity="center"
                 android:text="NEW"
                 android:textColor="#ffffff"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone"/>
 
             <!--가격정보 받아서 넣으면 될듯 textview로 바꾸게 될 것 같음-->
-            <ImageView
+            <TextView
                 android:id="@+id/eatdeal_iv_original_price"
                 android:layout_width="80dp"
                 android:layout_height="35dp"
                 android:layout_gravity="end|bottom"
+                android:layout_marginEnd="15dp"
                 android:layout_marginBottom="40dp"
-                android:layout_marginEnd="5dp"/>
+                android:gravity="end"
+                android:text="13,400"
+                android:textColor="#ffffff"
+                android:textSize="17dp"/>
 
-            <ImageView
+            <TextView
                 android:id="@+id/eatdeal_iv_discounted_price"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
-                android:layout_gravity="end|bottom"/>
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="15dp"
+                android:gravity="end"
+                android:text="23,400"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textSize="28dp" />
         </FrameLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/eatdeal_frame_food_img"
             android:orientation="vertical">
             <!--        android:layout_height="120dp"-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/eatdeal_tv_restaurant_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="15dp"
-                android:paddingTop="15dp"
-                android:text="음식점이름"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:textSize="16dp" />
-
+                <TextView
+                    android:id="@+id/eatdeal_tv_restaurant_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:paddingTop="15dp"
+                    android:text="음식점이름"
+                    android:textColor="#000000"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/eatdeal_tv_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF0000"
+                    android:paddingEnd="15dp"/>
+            </LinearLayout>
             <TextView
                 android:id="@+id/eatdeal_tv_discounted_menu"
                 android:layout_width="wrap_content"
@@ -79,6 +110,20 @@
                 android:paddingTop="8dp"
                 android:text="할인 메뉴"
                 android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/eatdeal_tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_light_gray"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:textSize="13dp"
+                android:visibility="gone"/>
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

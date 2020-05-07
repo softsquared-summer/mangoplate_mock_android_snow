@@ -2,6 +2,7 @@ package com.softsquared.mangoplate_snow.src.main.find_restaurant;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -62,7 +63,10 @@ public class FindRestaurantFragment extends BaseFragment implements FindRestaura
 
         mRestaurantRecyclerView = rootView.findViewById(R.id.frag_find_restaurant_recyclerview_restaurant_list);
         mFindRestaurantBtnDistrict = rootView.findViewById(R.id.frag_find_restaurant_btn_district);
+        mFindRestaurantBtnDistrict.setPaintFlags(mFindRestaurantBtnDistrict.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
         mFindRestaurantSort = rootView.findViewById(R.id.frag_find_restaurant_sort);
+        mFindRestaurantSort.setPaintFlags(mFindRestaurantSort.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         mRestaurantsRecyclerAdapter = new RestaurantsRecyclerAdapter(mContext, restaurants);
         mRestaurantRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));

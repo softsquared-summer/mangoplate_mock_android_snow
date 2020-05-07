@@ -1,5 +1,6 @@
 package com.softsquared.mangoplate_snow.src.main.discount.eatdeal.interfaces;
 
+import com.softsquared.mangoplate_snow.src.main.discount.eatdeal.models.EatDealResponse;
 import com.softsquared.mangoplate_snow.src.main.models.DefaultResponse;
 
 import okhttp3.RequestBody;
@@ -11,15 +12,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface EatDealRetrofitInterface {
-    @GET("/jwt")
-    Call<DefaultResponse> getTest();
-
-    @GET("/test/{number}")
-    Call<DefaultResponse> getTestPathAndQuery(
-            @Path("number") int number,
-            @Query("content") final String content
-    );
-
-    @POST("/test")
-    Call<DefaultResponse> postTest(@Body RequestBody params);
+    @GET("/eatdeals")
+    Call<EatDealResponse> getEatDeal();
 }

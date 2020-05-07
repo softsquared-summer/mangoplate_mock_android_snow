@@ -10,7 +10,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.softsquared.mangoplate_snow.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.softsquared.mangoplate_snow.src.ApplicationClass.getRetrofit;
 
 public class FindRestaurantService {
@@ -22,7 +21,7 @@ public class FindRestaurantService {
 
     public void tryGetRestaurantList() {
         final FindRestaurantRetrofitInterface findRestaurantRetrofitInterface = getRetrofit().create(FindRestaurantRetrofitInterface.class);
-        findRestaurantRetrofitInterface.getRestaurantList("main", (float) 37.477929, (float) 126.899720, "가고싶다", "한식").enqueue(new Callback<FindRestaurantListResponse>() {
+        findRestaurantRetrofitInterface.getRestaurantList("main", (float) 37.477929, (float) 126.899720).enqueue(new Callback<FindRestaurantListResponse>() {
             @Override
             public void onResponse(Call<FindRestaurantListResponse> call, Response<FindRestaurantListResponse> response) {
                 final FindRestaurantListResponse findRestaurantListResponse = response.body();
